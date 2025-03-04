@@ -9,10 +9,10 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
 </head>
@@ -21,7 +21,8 @@
     {{-- Navbar --}}
     <nav class="bg-white fixed top-0 left-0 w-full z-50 shadow-md">
         <div class="max-w-7xl mx-auto flex items-center justify-between h-20 px-6">
-            <h1 class="text-green-700 font-semibold text-lg">WORD 3D</h1>
+            {{-- <h1 class="text-green-700 font-semibold text-lg">WORD 3D</h1> --}}
+            <img src="{{ asset('assets/images/LOGO.png') }}" class="w-32" alt="">
 
             <!-- Menu (Hidden di Mobile) -->
             <div class="hidden md:flex space-x-5">
@@ -64,14 +65,21 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative w-full h-screen bg-black text-white flex items-center justify-center">
-        <div class="absolute inset-0 bg-gradient-to-b from-black to-gray-900 opacity-75"></div>
+    <section
+        class="relative w-full h-screen bg-fixed bg-center bg-cover bg-no-repeat text-white flex items-center justify-center"
+        style="background-image: url('{{ asset('assets/images/Driver.00_01_10_14.Still003.png') }}');">
+        <div class="absolute inset-0 bg-black opacity-80"></div> <!-- Overlay -->
         <div class="relative text-center px-6 md:px-12 max-w-4xl">
-            <h1 class="text-5xl md:text-7xl font-extrabold text-green-500 drop-shadow-lg">Revolutionize Your 3D
-                Experience</h1>
-            <p class="mt-6 text-lg md:text-2xl text-gray-300 font-light">Discover high-quality, immersive 3D videos
-                crafted for entertainment and business excellence.</p>
-            <div class="mt-8 flex justify-center space-x-4">
+            <h1 data-aos="fade-up" data-aos-duration="1000"
+                class="text-5xl md:text-7xl font-extrabold text-green-500 drop-shadow-lg">
+                Revolutionize Your 3D Experience
+            </h1>
+            <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000"
+                class="mt-6 text-lg md:text-2xl text-gray-300 font-light">
+                Discover high-quality, immersive 3D videos crafted for entertainment and business excellence.
+            </p>
+            <div data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000"
+                class="mt-8 flex justify-center space-x-4">
                 <a href="#"
                     class="border-2 border-green-700 text-green-700 px-6 py-3 rounded-full text-lg font-semibold hover:bg-green-700 hover:text-white transition duration-300 flex items-center space-x-2">
                     <i class="ri-shopping-cart-2-line"></i>
@@ -84,34 +92,42 @@
     <!-- Features Section -->
     <section class="bg-white py-16 px-6 md:px-12 text-white">
         <div class="max-w-6xl mx-auto text-center">
-            <h2 class="text-4xl md:text-5xl font-extrabold text-green-500 drop-shadow-lg">Why Choose Our 3D Videos?</h2>
-            <p class="mt-4 text-lg text-gray-600">We offer high-quality, immersive 3D experiences that redefine visual
-                storytelling.</p>
+            <h2 class="text-4xl md:text-5xl font-extrabold text-green-500 drop-shadow-lg" data-aos="fade-up">
+                Why Choose Our 3D Videos?
+            </h2>
+            <p class="mt-4 text-lg text-gray-600" data-aos="fade-up" data-aos-delay="200">
+                We offer high-quality, immersive 3D experiences that redefine visual storytelling.
+            </p>
         </div>
 
         <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <div
+            <!-- Card 1 -->
+            <div data-aos="zoom-in" data-aos-delay="300"
                 class="relative bg-green-700 p-10 rounded-xl text-center transform transition duration-300 hover:scale-105 hover:shadow-2xl hover:bg-green-600">
                 <div
-                    class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-white text-green-700 w-16 h-16 flex items-center justify-center rounded-full shadow-md">
+                    class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-white text-green-700 w-16 h-16 flex items-center justify-center rounded-full shadow-md transition duration-300 hover:rotate-12">
                     <i class="ri-film-line text-3xl"></i>
                 </div>
                 <h3 class="text-2xl font-semibold mt-12">Ultra HD Quality</h3>
                 <p class="mt-4 text-lg text-gray-100">Enjoy crystal-clear 3D videos with stunning resolution.</p>
             </div>
-            <div
+
+            <!-- Card 2 -->
+            <div data-aos="zoom-in" data-aos-delay="400"
                 class="relative bg-green-700 p-10 rounded-xl text-center transform transition duration-300 hover:scale-105 hover:shadow-2xl hover:bg-green-600">
                 <div
-                    class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-white text-green-700 w-16 h-16 flex items-center justify-center rounded-full shadow-md">
+                    class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-white text-green-700 w-16 h-16 flex items-center justify-center rounded-full shadow-md transition duration-300 hover:rotate-12">
                     <i class="ri-goggles-line text-3xl"></i>
                 </div>
                 <h3 class="text-2xl font-semibold mt-12">Immersive Experience</h3>
                 <p class="mt-4 text-lg text-gray-100">Get lost in the world of 3D with our immersive content.</p>
             </div>
-            <div
+
+            <!-- Card 3 -->
+            <div data-aos="zoom-in" data-aos-delay="500"
                 class="relative bg-green-700 p-10 rounded-xl text-center transform transition duration-300 hover:scale-105 hover:shadow-2xl hover:bg-green-600">
                 <div
-                    class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-white text-green-700 w-16 h-16 flex items-center justify-center rounded-full shadow-md">
+                    class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-white text-green-700 w-16 h-16 flex items-center justify-center rounded-full shadow-md transition duration-300 hover:rotate-12">
                     <i class="ri-customer-service-2-line text-3xl"></i>
                 </div>
                 <h3 class="text-2xl font-semibold mt-12">24/7 Support</h3>
@@ -130,9 +146,9 @@
 
         <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <!-- Product Card -->
-            <div class="relative bg-gray-900 rounded-2xl overflow-hidden shadow-lg group hover:shadow-2xl transition duration-300 transform hover:scale-105"
+            <div class="relative bg-gray-900 rounded-2xl overflow-hidden shadow-lg group transition duration-500 hover:shadow-2xl hover:scale-105"
                 data-aos="zoom-in" data-aos-delay="100">
-                <img src="{{ asset('assets/images/img1.jpg') }}" alt="3D Video"
+                <img src="{{ asset('assets/images/Cosmp 1.00_00_39_24.Still001.png') }}" alt="3D Video"
                     class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110">
                 <div class="p-6 text-center">
                     <h3 class="text-2xl font-semibold text-green-500 group-hover:text-green-400 transition">3D Sci-Fi
@@ -146,9 +162,9 @@
                 </div>
             </div>
 
-            <div class="relative bg-gray-900 rounded-2xl overflow-hidden shadow-lg group hover:shadow-2xl transition duration-300 transform hover:scale-105"
+            <div class="relative bg-gray-900 rounded-2xl overflow-hidden shadow-lg group transition duration-500 hover:shadow-2xl hover:scale-105"
                 data-aos="zoom-in" data-aos-delay="200">
-                <img src="{{ asset('assets/images/img1.jpg') }}" alt="VR Experience"
+                <img src="{{ asset('assets/images/Driver.00_00_04_23.Still001.png') }}" alt="VR Experience"
                     class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110">
                 <div class="p-6 text-center">
                     <h3 class="text-2xl font-semibold text-green-500 group-hover:text-green-400 transition">Virtual
@@ -162,9 +178,41 @@
                 </div>
             </div>
 
-            <div class="relative bg-gray-900 rounded-2xl overflow-hidden shadow-lg group hover:shadow-2xl transition duration-300 transform hover:scale-105"
+            <div class="relative bg-gray-900 rounded-2xl overflow-hidden shadow-lg group transition duration-500 hover:shadow-2xl hover:scale-105"
                 data-aos="zoom-in" data-aos-delay="300">
-                <img src="{{ asset('assets/images/img1.jpg') }}" alt="3D Animation"
+                <img src="{{ asset('assets/images/Driver.00_00_10_02.Still002.png') }}" alt="3D Animation"
+                    class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110">
+                <div class="p-6 text-center">
+                    <h3 class="text-2xl font-semibold text-green-500 group-hover:text-green-400 transition">Animated 3D
+                        Masterpiece</h3>
+                    <p class="mt-2 text-gray-400 text-sm">A beautifully crafted animation in 3D format.</p>
+                    <p class="mt-2 text-green-400 font-bold text-xl">$29.99</p>
+                    <a href="#"
+                        class="mt-4 inline-block bg-green-600 text-white px-6 py-3 rounded-full font-semibold transition hover:bg-green-500 hover:shadow-lg animate-pulse">
+                        <i class="ri-shopping-cart-2-line mr-2"></i> Buy Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="relative bg-gray-900 rounded-2xl overflow-hidden shadow-lg group transition duration-500 hover:shadow-2xl hover:scale-105"
+                data-aos="zoom-in" data-aos-delay="300">
+                <img src="{{ asset('assets/images/Driver.00_01_10_14.Still003.png') }}" alt="3D Animation"
+                    class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110">
+                <div class="p-6 text-center">
+                    <h3 class="text-2xl font-semibold text-green-500 group-hover:text-green-400 transition">Animated 3D
+                        Masterpiece</h3>
+                    <p class="mt-2 text-gray-400 text-sm">A beautifully crafted animation in 3D format.</p>
+                    <p class="mt-2 text-green-400 font-bold text-xl">$29.99</p>
+                    <a href="#"
+                        class="mt-4 inline-block bg-green-600 text-white px-6 py-3 rounded-full font-semibold transition hover:bg-green-500 hover:shadow-lg animate-pulse">
+                        <i class="ri-shopping-cart-2-line mr-2"></i> Buy Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="relative bg-gray-900 rounded-2xl overflow-hidden shadow-lg group transition duration-500 hover:shadow-2xl hover:scale-105"
+                data-aos="zoom-in" data-aos-delay="300">
+                <img src="{{ asset('assets/images/Driver.00_01_12_15.Still004.png') }}" alt="3D Animation"
                     class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110">
                 <div class="p-6 text-center">
                     <h3 class="text-2xl font-semibold text-green-500 group-hover:text-green-400 transition">Animated 3D
@@ -193,7 +241,7 @@
                 <div class="swiper-wrapper">
                     <!-- Testimonial Card -->
                     <div class="swiper-slide">
-                        <div
+                        <div data-aos="fade-right" data-aos-duration="1000"
                             class="bg-white p-6 rounded-xl shadow-lg text-center border border-gray-200 transform hover:scale-105 transition duration-300">
                             <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User"
                                 class="w-20 h-20 rounded-full mx-auto border-4 border-green-500 shadow-md">
@@ -206,7 +254,7 @@
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <div
+                        <div data-aos="fade-down" data-aos-duration="1000"
                             class="bg-white p-6 rounded-xl shadow-lg text-center border border-gray-200 transform hover:scale-105 transition duration-300">
                             <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="User"
                                 class="w-20 h-20 rounded-full mx-auto border-4 border-green-500 shadow-md">
@@ -219,7 +267,7 @@
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <div
+                        <div data-aos="fade-left" data-aos-duration="1000"
                             class="bg-white p-6 rounded-xl shadow-lg text-center border border-gray-200 transform hover:scale-105 transition duration-300">
                             <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="User"
                                 class="w-20 h-20 rounded-full mx-auto border-4 border-green-500 shadow-md">
@@ -232,7 +280,7 @@
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <div
+                        <div data-aos="fade-right" data-aos-duration="1000"
                             class="bg-white p-6 rounded-xl shadow-lg text-center border border-gray-200 transform hover:scale-105 transition duration-300">
                             <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="User"
                                 class="w-20 h-20 rounded-full mx-auto border-4 border-green-500 shadow-md">
@@ -283,10 +331,14 @@
             <div class="md:w-1/3">
                 <h3 class="text-lg font-extrabold">Ikuti Kami</h3>
                 <div class="flex justify-center md:justify-start space-x-4 mt-3">
-                    <a href="#" class="text-gray-200 hover:text-white"><i class="fab fa-facebook text-2xl"></i></a>
-                    <a href="#" class="text-gray-200 hover:text-white"><i class="fab fa-twitter text-2xl"></i></a>
-                    <a href="#" class="text-gray-200 hover:text-white"><i class="fab fa-instagram text-2xl"></i></a>
-                    <a href="#" class="text-gray-200 hover:text-white"><i class="fab fa-youtube text-2xl"></i></a>
+                    <a href="#" class="text-gray-200 hover:text-white"><i
+                            class="fab fa-facebook text-2xl"></i></a>
+                    <a href="#" class="text-gray-200 hover:text-white"><i
+                            class="fab fa-twitter text-2xl"></i></a>
+                    <a href="#" class="text-gray-200 hover:text-white"><i
+                            class="fab fa-instagram text-2xl"></i></a>
+                    <a href="#" class="text-gray-200 hover:text-white"><i
+                            class="fab fa-youtube text-2xl"></i></a>
                 </div>
             </div>
         </div>
@@ -296,6 +348,9 @@
         </div>
     </footer>
 
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 </html>
