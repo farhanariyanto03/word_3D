@@ -110,18 +110,18 @@
                 </li>
 
                 <li>
-                    <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-500 dark:hover:bg-green-200 group
-                               {{ request()->is('admin/rekening') ? 'bg-green-500 dark:bg-green-800' : '' }}">
+                    <a href="{{ route('nomor-rekening.index') }}"
+                        class="flex items-center p-2 rounded-lg dark:text-white hover:bg-green-500 dark:hover:bg-green-200 group
+                            {{ request()->routeIs('nomor-rekening.index') ? 'bg-green-500 dark:bg-green-800 text-white' : 'text-gray-900' }}">
                         <i class="ri-bank-card-line text-3xl"></i>
                         <span class="ms-3 font-semibold">Nomor Rekening</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-500 dark:hover:bg-green-200 group
-                               {{ request()->is('admin/pesanan') ? 'bg-green-500 dark:bg-green-800' : '' }}">
+                    <a href="{{ route('pesanan.index') }}"
+                        class="flex items-center p-2 rounded-lg dark:text-white hover:bg-green-500 dark:hover:bg-green-200 group
+                            {{ request()->routeIs('pesanan.index') ? 'bg-green-500 dark:bg-green-800 text-white' : 'text-gray-900' }}">
                         <i class="ri-shopping-cart-line text-3xl"></i>
                         <span class="ms-3 font-semibold">Pesanan Produk</span>
                     </a>

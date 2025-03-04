@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\admin\NomorRekeningController;
+use App\Http\Controllers\admin\PesananController;
 use App\Http\Controllers\admin\VidioController;
 use App\Http\Controllers\customer\DashboardAdminController;
 use Illuminate\Support\Facades\Route;
@@ -16,6 +18,8 @@ Route::prefix('admin')->group(function () {
     });
     Route::get('/', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
     Route::resource('vidio', VidioController::class);
+    Route::resource('nomor-rekening', NomorRekeningController::class);
+    Route::get('/pesanan', [PesananController::class, 'index'])->name('pesanan.index');
 });
 
 Route::prefix('customer')->group(function () {
