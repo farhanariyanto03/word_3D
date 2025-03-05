@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;display=swap" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="{{ asset('assets/images/LOGO.png') }}">
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -15,6 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
+    <title>WORLD 3D</title>
 </head>
 
 <body>
@@ -146,85 +148,24 @@
 
         <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <!-- Product Card -->
-            <div class="relative bg-gray-900 rounded-2xl overflow-hidden shadow-lg group transition duration-500 hover:shadow-2xl hover:scale-105"
-                data-aos="zoom-in" data-aos-delay="100">
-                <img src="{{ asset('assets/images/Cosmp 1.00_00_39_24.Still001.png') }}" alt="3D Video"
-                    class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110">
-                <div class="p-6 text-center">
-                    <h3 class="text-2xl font-semibold text-green-500 group-hover:text-green-400 transition">3D Sci-Fi
-                        Adventure</h3>
-                    <p class="mt-2 text-gray-400 text-sm">Experience the ultimate futuristic journey in 3D.</p>
-                    <p class="mt-2 text-green-400 font-bold text-xl">$19.99</p>
-                    <a href="#"
-                        class="mt-4 inline-block bg-green-600 text-white px-6 py-3 rounded-full font-semibold transition hover:bg-green-500 hover:shadow-lg animate-pulse">
-                        <i class="ri-shopping-cart-2-line mr-2"></i> Buy Now
-                    </a>
+            @foreach ($produk as $p)
+                <div class="relative bg-gray-900 rounded-2xl overflow-hidden shadow-lg group transition duration-500 hover:shadow-2xl hover:scale-105"
+                    data-aos="zoom-in" data-aos-delay="100">
+                    <img src="{{ asset('storage/' . $p->gambar_produk) }}" alt="3D Video"
+                        class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-semibold text-green-500 group-hover:text-green-400 transition">
+                            {{ $p->nama_produk }}</h3>
+                        <p class="mt-2 text-gray-400 text-sm">{{ $p->deskripsi_produk }}</p>
+                        <p class="mt-2 text-green-400 font-bold text-xl">Rp.
+                            {{ number_format($p->harga_produk, 0, ',', '.') }}</p>
+                        <a href="{{ route('order.index', Crypt::encryptString($p->id)) }}"
+                            class="mt-4 inline-block bg-green-600 text-white px-6 py-3 rounded-full font-semibold transition hover:bg-green-500 hover:shadow-lg animate-pulse">
+                            <i class="ri-shopping-cart-2-line mr-2"></i> Buy Now
+                        </a>
+                    </div>
                 </div>
-            </div>
-
-            <div class="relative bg-gray-900 rounded-2xl overflow-hidden shadow-lg group transition duration-500 hover:shadow-2xl hover:scale-105"
-                data-aos="zoom-in" data-aos-delay="200">
-                <img src="{{ asset('assets/images/Driver.00_00_04_23.Still001.png') }}" alt="VR Experience"
-                    class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110">
-                <div class="p-6 text-center">
-                    <h3 class="text-2xl font-semibold text-green-500 group-hover:text-green-400 transition">Virtual
-                        Reality Experience</h3>
-                    <p class="mt-2 text-gray-400 text-sm">Immerse yourself in a mind-blowing VR environment.</p>
-                    <p class="mt-2 text-green-400 font-bold text-xl">$24.99</p>
-                    <a href="#"
-                        class="mt-4 inline-block bg-green-600 text-white px-6 py-3 rounded-full font-semibold transition hover:bg-green-500 hover:shadow-lg animate-pulse">
-                        <i class="ri-shopping-cart-2-line mr-2"></i> Buy Now
-                    </a>
-                </div>
-            </div>
-
-            <div class="relative bg-gray-900 rounded-2xl overflow-hidden shadow-lg group transition duration-500 hover:shadow-2xl hover:scale-105"
-                data-aos="zoom-in" data-aos-delay="300">
-                <img src="{{ asset('assets/images/Driver.00_00_10_02.Still002.png') }}" alt="3D Animation"
-                    class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110">
-                <div class="p-6 text-center">
-                    <h3 class="text-2xl font-semibold text-green-500 group-hover:text-green-400 transition">Animated 3D
-                        Masterpiece</h3>
-                    <p class="mt-2 text-gray-400 text-sm">A beautifully crafted animation in 3D format.</p>
-                    <p class="mt-2 text-green-400 font-bold text-xl">$29.99</p>
-                    <a href="#"
-                        class="mt-4 inline-block bg-green-600 text-white px-6 py-3 rounded-full font-semibold transition hover:bg-green-500 hover:shadow-lg animate-pulse">
-                        <i class="ri-shopping-cart-2-line mr-2"></i> Buy Now
-                    </a>
-                </div>
-            </div>
-
-            <div class="relative bg-gray-900 rounded-2xl overflow-hidden shadow-lg group transition duration-500 hover:shadow-2xl hover:scale-105"
-                data-aos="zoom-in" data-aos-delay="300">
-                <img src="{{ asset('assets/images/Driver.00_01_10_14.Still003.png') }}" alt="3D Animation"
-                    class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110">
-                <div class="p-6 text-center">
-                    <h3 class="text-2xl font-semibold text-green-500 group-hover:text-green-400 transition">Animated 3D
-                        Masterpiece</h3>
-                    <p class="mt-2 text-gray-400 text-sm">A beautifully crafted animation in 3D format.</p>
-                    <p class="mt-2 text-green-400 font-bold text-xl">$29.99</p>
-                    <a href="#"
-                        class="mt-4 inline-block bg-green-600 text-white px-6 py-3 rounded-full font-semibold transition hover:bg-green-500 hover:shadow-lg animate-pulse">
-                        <i class="ri-shopping-cart-2-line mr-2"></i> Buy Now
-                    </a>
-                </div>
-            </div>
-
-            <div class="relative bg-gray-900 rounded-2xl overflow-hidden shadow-lg group transition duration-500 hover:shadow-2xl hover:scale-105"
-                data-aos="zoom-in" data-aos-delay="300">
-                <img src="{{ asset('assets/images/Driver.00_01_12_15.Still004.png') }}" alt="3D Animation"
-                    class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110">
-                <div class="p-6 text-center">
-                    <h3 class="text-2xl font-semibold text-green-500 group-hover:text-green-400 transition">Animated 3D
-                        Masterpiece</h3>
-                    <p class="mt-2 text-gray-400 text-sm">A beautifully crafted animation in 3D format.</p>
-                    <p class="mt-2 text-green-400 font-bold text-xl">$29.99</p>
-                    <a href="#"
-                        class="mt-4 inline-block bg-green-600 text-white px-6 py-3 rounded-full font-semibold transition hover:bg-green-500 hover:shadow-lg animate-pulse">
-                        <i class="ri-shopping-cart-2-line mr-2"></i> Buy Now
-                    </a>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
 
@@ -240,58 +181,24 @@
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
                     <!-- Testimonial Card -->
-                    <div class="swiper-slide">
-                        <div data-aos="fade-right" data-aos-duration="1000"
-                            class="bg-white p-6 rounded-xl shadow-lg text-center border border-gray-200 transform hover:scale-105 transition duration-300">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User"
-                                class="w-20 h-20 rounded-full mx-auto border-4 border-green-500 shadow-md">
-                            <p class="mt-4 text-xl font-bold text-gray-800">John Doe</p>
-                            <div class="flex justify-center mt-2">
-                                <span class="text-yellow-400 text-2xl">★★★★★</span>
+                    @foreach ($testimoni as $t)
+                        <div class="swiper-slide">
+                            <div data-aos="fade-right" data-aos-duration="1000"
+                                class="bg-white p-6 rounded-xl shadow-lg text-center border border-gray-200 transform hover:scale-105 transition duration-300">
+                                <i
+                                    class="ri-user-fill text-7xl rounded-full mx-auto border-4 border-green-500 shadow-md"></i>
+                                <p class="mt-4 text-xl font-bold text-gray-800">{{ $t->user->name }}</p>
+                                @for ($i = 1; $i <= 5; $i++)
+                                    @if ($i <= $t->rating)
+                                        <span class="text-yellow-400 text-2xl">&#9733;</span>
+                                    @else
+                                        <span class="text-gray-300 text-2xl">&#9733;</span>
+                                    @endif
+                                @endfor
+                                <p class="mt-4 text-gray-600 italic">“{{ $t->testimoni }}”</p>
                             </div>
-                            <p class="mt-4 text-gray-600 italic">“The best 3D videos I’ve ever seen! Highly
-                                recommended.”</p>
                         </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div data-aos="fade-down" data-aos-duration="1000"
-                            class="bg-white p-6 rounded-xl shadow-lg text-center border border-gray-200 transform hover:scale-105 transition duration-300">
-                            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="User"
-                                class="w-20 h-20 rounded-full mx-auto border-4 border-green-500 shadow-md">
-                            <p class="mt-4 text-xl font-bold text-gray-800">Jane Smith</p>
-                            <div class="flex justify-center mt-2">
-                                <span class="text-yellow-400 text-2xl">★★★★★</span>
-                            </div>
-                            <p class="mt-4 text-gray-600 italic">“Absolutely stunning 3D effects! A must-try
-                                experience.”</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div data-aos="fade-left" data-aos-duration="1000"
-                            class="bg-white p-6 rounded-xl shadow-lg text-center border border-gray-200 transform hover:scale-105 transition duration-300">
-                            <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="User"
-                                class="w-20 h-20 rounded-full mx-auto border-4 border-green-500 shadow-md">
-                            <p class="mt-4 text-xl font-bold text-gray-800">Michael Lee</p>
-                            <div class="flex justify-center mt-2">
-                                <span class="text-yellow-400 text-2xl">★★★★★</span>
-                            </div>
-                            <p class="mt-4 text-gray-600 italic">“Fantastic customer service and high-quality 3D
-                                content.”</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div data-aos="fade-right" data-aos-duration="1000"
-                            class="bg-white p-6 rounded-xl shadow-lg text-center border border-gray-200 transform hover:scale-105 transition duration-300">
-                            <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="User"
-                                class="w-20 h-20 rounded-full mx-auto border-4 border-green-500 shadow-md">
-                            <p class="mt-4 text-xl font-bold text-gray-800">Michael Lee</p>
-                            <div class="flex justify-center mt-2">
-                                <span class="text-yellow-400 text-2xl">★★★★★</span>
-                            </div>
-                            <p class="mt-4 text-gray-600 italic">“Fantastic customer service and high-quality 3D
-                                content.”</p>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
 

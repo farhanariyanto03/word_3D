@@ -132,3 +132,12 @@
         scroll-margin-top: 100px;
     }
 }
+
+.dataTables_length select {
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+.dataTables_filter input {
+    margin-bottom: 10px;
+}

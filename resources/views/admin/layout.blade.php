@@ -158,6 +158,9 @@
         new DataTable('#myTable1', {
             info: false,
         });
+        new DataTable('#myTable2', {
+            info: false,
+        });
     </script>
 </body>
 

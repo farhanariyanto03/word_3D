@@ -26,48 +26,237 @@
             </div>
         @endif
 
-        <div class="relative overflow-x-auto shadow-md rounded-lg">
-            <table id="myTable" class="w-full text-sm text-black dark:text-black">
-                <thead class="text-xs text-white uppercase bg-green-500 dark:bg-gray-700 dark:text-green-400">
-                    <tr class="text-center">
-                        <th scope="col" class="px-6 py-4">No</th>
-                        <th scope="col" class="px-6 py-4">Nama Produk</th>
-                        <th scope="col" class="px-6 py-4">Gambar Produk</th>
-                        <th scope="col" class="px-6 py-4">Harga</th>
-                        <th scope="col" class="px-6 py-4">Minimal DP</th>
-                        <th scope="col" class="px-6 py-4">Deskripsi Produk</th>
-                        <th scope="col" class="px-6 py-4">Syarat & Ketentuan</th>
-                        <th scope="col" class="px-6 py-4">Action</th>
-                    </tr>
-                </thead>
-                {{-- <tbody>
-                    @foreach ($vidio as $v)
-                        <tr class="bg-white dark:bg-gray-800 border-b hover:bg-gray-50 dark:hover:bg-gray-700">
-                            <td
-                                class="px-6 py-5 font-medium text-gray-900 dark:text-white whitespace-nowrap leading-relaxed">
-                                {{ $loop->iteration }}
-                            </td>
-                            <td class="px-6 py-5 leading-relaxed">{{ $v->nama_produk }}</td>
-                            <td class="px-6 py-5 leading-relaxed"><img src="{{ asset('storage/' . $v->gambar_produk) }}"
-                                    class="w-52 rounded-lg" alt=""></td>
-                            <td class="px-6 py-5 leading-relaxed">{{ $v->harga_produk }}</td>
-                            <td class="px-6 py-5 leading-relaxed">{{ $v->minimal_dp }}</td>
-                            <td class="px-6 py-5 leading-relaxed">{{ $v->deskripsi_produk }}</td>
-                            <td class="px-6 py-5 leading-relaxed">{{ $v->syarat_ketentuan }}</td>
-                            <td class="px-6 py-5 leading-relaxed flex flex-row space-x-1">
-                                <a href="{{ route('vidio.edit', Crypt::encrypt($v->id)) }}"
-                                    class="px-4 py-3 text-white bg-yellow-500 rounded-lg hover:bg-yellow-600">Edit</a>
-                                <form action="{{ route('vidio.destroy', Crypt::encrypt($v->id)) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="px-4 py-3 text-white bg-red-700 rounded-lg hover:bg-red-600"
-                                        type="submit">Hapus</button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody> --}}
-            </table>
+        <!-- Tombol Tabs -->
+        <div class="flex space-x-4 mb-4">
+            <button onclick="showTab('pesanan-masuk', this)"
+                class="tab-btn px-4 py-2 bg-transparent text-green-700 rounded-lg border-2 border-green-700
+                hover:bg-green-700 hover:text-white transition-colors duration-300">
+                Pesanan Masuk
+            </button>
+            <button onclick="showTab('proses', this)"
+                class="tab-btn px-4 py-2 bg-transparent text-green-700 rounded-lg border-2 border-green-700
+                hover:bg-green-700 hover:text-white transition-colors duration-300">
+                Proses
+            </button>
+            <button onclick="showTab('selesai', this)"
+                class="tab-btn px-4 py-2 bg-transparent text-green-700 rounded-lg border-2 border-green-700
+                hover:bg-green-700 hover:text-white transition-colors duration-300">
+                Selesai
+            </button>
         </div>
-    </div>
-@endsection
+
+        <div class="relative overflow-x-auto shadow-md rounded-lg">
+            <div id="pesanan-masuk">
+                <table id="myTable" class="w-full text-sm text-black dark:text-black">
+                    <thead class="text-xs text-white uppercase bg-green-500 dark:bg-gray-700 dark:text-green-400">
+                        <tr class="text-center">
+                            <th scope="col" class="px-6 py-4">No</th>
+                            <th scope="col" class="px-6 py-4">Invoice</th>
+                            <th scope="col" class="px-6 py-4">Bukti Pembayaran</th>
+                            <th scope="col" class="px-6 py-4">Nama Pemesan</th>
+                            <th scope="col" class="px-6 py-4">Produk Yang Dipesan</th>
+                            <th scope="col" class="px-6 py-4">Harga</th>
+                            <th scope="col" class="px-6 py-4">DP / Bayar</th>
+                            <th scope="col" class="px-6 py-4">Sisa Bayar</th>
+                            <th scope="col" class="px-6 py-4">Status</th>
+                            <th scope="col" class="px-6 py-4">Action</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Pesanan Masuk -->
+                    <tbody id="pesanan-masuk">
+                        @foreach ($order_sudah_bayar as $o)
+                            <tr class="bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-5">{{ $loop->iteration }}</td>
+                                <td class="px-6 py-5">{{ $o->id }}</td>
+                                <td class="px-6 py-5">
+                                    <img src="{{ asset('storage/' . $o->bukti_tf) }}" class="w-20 rounded-lg cursor-pointer"
+                                        alt="Bukti Pembayaran"
+                                        onclick="openModal('{{ asset('storage/' . $o->bukti_tf) }}')">
+                                </td>
+                                <td class="px-6 py-5">{{ $o->user->name }}</td>
+                                <td class="px-6 py-5">{{ $o->produkVideo->nama_produk }}</td>
+                                <td class="px-6 py-5">{{ $o->produkVideo->harga_produk }}</td>
+                                <td class="px-6 py-5">{{ $o->bayar }}</td>
+                                <td class="px-6 py-5">{{ $o->sisa_bayar }}</td>
+                                <td class="px-6 py-5">{{ $o->status }}</td>
+                                <td class="px-6 py-5">
+                                    <div class="flex flex-row space-x-0.5">
+                                        <form action="{{ route('pesanan.proses', $o->id) }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                            <button
+                                                class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition">
+                                                <i class="ri-check-fill text-xl"></i>
+                                            </button>
+                                        </form>
+                                        <button
+                                            class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition">
+                                            <i class="ri-close-fill text-xl"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="proses" class="hidden">
+                <table id="myTable1" class="w-full text-sm text-black dark:text-black">
+                    <thead class="text-xs text-white uppercase bg-green-500 dark:bg-gray-700 dark:text-green-400">
+                        <tr class="text-center">
+                            <th scope="col" class="px-6 py-4">No</th>
+                            <th scope="col" class="px-6 py-4">Invoice</th>
+                            <th scope="col" class="px-6 py-4">Bukti Pembayaran</th>
+                            <th scope="col" class="px-6 py-4">Nama Pemesan</th>
+                            <th scope="col" class="px-6 py-4">Produk Yang Dipesan</th>
+                            <th scope="col" class="px-6 py-4">Harga</th>
+                            <th scope="col" class="px-6 py-4">DP / Bayar</th>
+                            <th scope="col" class="px-6 py-4">Sisa Bayar</th>
+                            <th scope="col" class="px-6 py-4">Status</th>
+                            <th scope="col" class="px-6 py-4">Action</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Proses -->
+                    <tbody id="pesanan-masuk">
+                        @foreach ($order_proses as $o)
+                            <tr class="bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-5">{{ $loop->iteration }}</td>
+                                <td class="px-6 py-5">{{ $o->id }}</td>
+                                <td class="px-6 py-5">
+                                    <img src="{{ asset('storage/' . $o->bukti_tf) }}"
+                                        class="w-20 rounded-lg cursor-pointer" alt="Bukti Pembayaran"
+                                        onclick="openModal('{{ asset('storage/' . $o->bukti_tf) }}')">
+                                </td>
+                                <td class="px-6 py-5">{{ $o->user->name }}</td>
+                                <td class="px-6 py-5">{{ $o->produkVideo->nama_produk }}</td>
+                                <td class="px-6 py-5">{{ $o->produkVideo->harga_produk }}</td>
+                                <td class="px-6 py-5">{{ $o->bayar }}</td>
+                                <td class="px-6 py-5">{{ $o->sisa_bayar }}</td>
+                                <td class="px-6 py-5">{{ $o->status }}</td>
+                                <td class="px-6 py-5">
+                                    <div class="flex flex-row space-x-0.5">
+                                        <form action="{{ route('pesanan.selesai', $o->id) }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                            <button type="submit"
+                                                class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition">
+                                                <i class="ri-check-double-fill text-xl"></i>
+                                            </button>
+                                        </form>
+                                        <button type="submit"
+                                            class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
+                                            <i class="ri-download-line text-xl"></i>
+                                        </button>
+                                        <button type="submit"
+                                            class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition">
+                                            <i class="ri-send-plane-fill text-xl"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="selesai" class="hidden">
+                <table id="myTable2" class="w-full text-sm text-black dark:text-black">
+                    <thead class="text-xs text-white uppercase bg-green-500 dark:bg-gray-700 dark:text-green-400">
+                        <tr class="text-center">
+                            <th scope="col" class="px-6 py-4">No</th>
+                            <th scope="col" class="px-6 py-4">Invoice</th>
+                            <th scope="col" class="px-6 py-4">Bukti Pembayaran</th>
+                            <th scope="col" class="px-6 py-4">Nama Pemesan</th>
+                            <th scope="col" class="px-6 py-4">Produk Yang Dipesan</th>
+                            <th scope="col" class="px-6 py-4">Harga</th>
+                            <th scope="col" class="px-6 py-4">DP / Bayar</th>
+                            <th scope="col" class="px-6 py-4">Sisa Bayar</th>
+                            <th scope="col" class="px-6 py-4">Status</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Selesai -->
+                    <tbody id="pesanan-masuk">
+                        @foreach ($order_selesai as $o)
+                            <tr class="bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-5">{{ $loop->iteration }}</td>
+                                <td class="px-6 py-5">{{ $o->id }}</td>
+                                <td class="px-6 py-5">
+                                    <img src="{{ asset('storage/' . $o->bukti_tf) }}"
+                                        class="w-20 rounded-lg cursor-pointer" alt="Bukti Pembayaran"
+                                        onclick="openModal('{{ asset('storage/' . $o->bukti_tf) }}')">
+                                </td>
+                                <td class="px-6 py-5">{{ $o->user->name }}</td>
+                                <td class="px-6 py-5">{{ $o->produkVideo->nama_produk }}</td>
+                                <td class="px-6 py-5">{{ $o->produkVideo->harga_produk }}</td>
+                                <td class="px-6 py-5">{{ $o->bayar }}</td>
+                                <td class="px-6 py-5">{{ $o->sisa_bayar }}</td>
+                                <td class="px-6 py-5">{{ $o->status }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div id="imageModal" tabindex="-1" aria-hidden="true"
+            class="hidden fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden bg-gray-900/70">
+            <div class="relative p-4 w-full max-w-2xl">
+                <div class="bg-white rounded-lg shadow dark:bg-gray-700">
+                    <div class="flex justify-between items-center p-4 border-b rounded-t dark:border-gray-600">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Bukti Pembayaran</h3>
+                        <button type="button" onclick="closeModal()"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
+                            ✖
+                        </button>
+                    </div>
+                    <div class="p-6 flex justify-center">
+                        <img id="modalImage" class="max-w-full max-h-[400px] rounded-lg" src=""
+                            alt="Bukti Pembayaran">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function showTab(tabId, element) {
+                // Sembunyikan semua tab
+                document.getElementById('pesanan-masuk').classList.add('hidden');
+                document.getElementById('proses').classList.add('hidden');
+                document.getElementById('selesai').classList.add('hidden');
+
+                // Tampilkan tab yang dipilih
+                document.getElementById(tabId).classList.remove('hidden');
+
+                // Hapus class active dari semua tombol
+                document.querySelectorAll('.tab-btn').forEach(btn => {
+                    btn.classList.remove('bg-green-700', 'text-white');
+                    btn.classList.add('bg-transparent', 'text-green-700');
+                });
+
+                // Tambahkan class active pada tombol yang diklik
+                element.classList.add('bg-green-700', 'text-white');
+                element.classList.remove('bg-transparent', 'text-green-700');
+            }
+
+            // Setel tombol pertama sebagai aktif saat halaman dimuat
+            document.addEventListener("DOMContentLoaded", function() {
+                document.querySelector(".tab-btn").click();
+            });
+        </script>
+
+        <script>
+            function openModal(imageSrc) {
+                document.getElementById("modalImage").src = imageSrc;
+                document.getElementById("imageModal").classList.remove("hidden");
+            }
+
+            function closeModal() {
+                document.getElementById("imageModal").classList.add("hidden");
+            }
+        </script>
+    @endsection

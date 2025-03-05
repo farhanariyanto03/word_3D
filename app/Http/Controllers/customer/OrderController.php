@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers\customer;
 
-use App\Http\Controllers\Controller;
+use App\Models\ProdukVideo;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class OrderController extends Controller
 {
-    public function index()
-    {
-        return view('customer.order');
-    }
+    // public function index(String $id)
+    // {
+    //     $id = decrypt($id);
+    //     $order = ProdukVideo::find($id);
+    //     dd($id);
+
+    //     return view('customer.order', compact('order'));
+    // }
 }
