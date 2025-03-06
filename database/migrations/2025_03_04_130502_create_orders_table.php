@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('bayar');
             $table->integer('sisa_bayar');
             $table->text('bukti_tf');
+            $table->text('link_vidio');
             $table->enum('status', ['sudah bayar', 'proses', 'selesai'])->default('sudah bayar');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

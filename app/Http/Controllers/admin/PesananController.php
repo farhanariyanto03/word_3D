@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
 
 class PesananController extends Controller
@@ -34,5 +35,14 @@ class PesananController extends Controller
         $order->save();
 
         return redirect()->route('pesanan.index')->with('success', 'Pesanan berhasil diupdate');
+    }
+
+    public function cetakInvoice($id)
+    {
+        $order = Order::findOrFail($id);
+
+        $pdf = Pdf::loadView('admin.pesanan.invoice', compact('order'));
+
+        return $pdf->download('invoice_' . $order->user->name . '.pdf');
     }
 }

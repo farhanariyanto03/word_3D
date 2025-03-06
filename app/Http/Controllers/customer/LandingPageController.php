@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\customer;
 
 use App\Models\Order;
+use App\Models\Testimoni;
 use App\Models\ProdukVideo;
 use Illuminate\Http\Request;
 use App\Models\NomorRekening;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
-use App\Models\Testimoni;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 
 class LandingPageController extends Controller
@@ -32,6 +33,8 @@ class LandingPageController extends Controller
 
     public function orderStore(Request $request, $id)
     {
+        $user = Auth::user();
+
         try {
             $id = Crypt::decryptString($id);
             $order = ProdukVideo::findOrFail($id);
@@ -60,7 +63,7 @@ class LandingPageController extends Controller
                 return redirect()->back()->with('error', 'Pembayaran kurang dari minimal DP! ' . $minimalDp)->withInput();
             }
 
-            $validatedData['user_id'] = 1;
+            $validatedData['user_id'] = $user->id;
             $validatedData['produk_video_id'] = $order->id;
             $validatedData['sisa_bayar'] = $totalHarga - $bayar;
             $validatedData['status'] = 'sudah bayar';
@@ -71,7 +74,7 @@ class LandingPageController extends Controller
                 $validatedData['bukti_tf'] = $filePath;
             }
 
-            Order::create($validatedData); // ID akan dibuat otomatis
+            Order::create($validatedData);
 
             return redirect()->route('history-order.index')->with('success', 'Pesanan berhasil dibuat');
         } catch (\Exception $e) {
@@ -82,22 +85,55 @@ class LandingPageController extends Controller
 
     public function historyOrder()
     {
+        $user = Auth::user();
+
         return view('customer.history-order', [
-            // 'order' => Order::where('user_id', auth()->user()->id)->get()
-            'order' => Order::all()
+            'order' => Order::where('user_id', $user->id)->get(),
+            'testimoni' => Testimoni::where('user_id', $user->id)->exists(),
         ]);
     }
 
     public function testimonialStore(Request $request)
     {
+        $user = Auth::user();
+        try {
+            $validatedData = $request->validate([
+                'rating' => 'required',
+                'testimoni' => 'required',
+            ]);
+
+            $validatedData['user_id'] = $user->id;
+
+            Testimoni::create($validatedData);
+            return redirect()->back()->with('success', 'Testimonial berhasil dikirim');
+        } catch (\Exception $e) {
+            Log::error('Testimonial Store Error: ' . $e->getMessage());
+            return redirect()->back()->withErrors($e->getMessage())->withInput();
+        }
+    }
+
+    public function pelunasan(Request $request, $id)
+    {
+        $id = Crypt::decryptString($id);
         $validatedData = $request->validate([
-            'rating' => 'required',
-            'testimoni' => 'required',
+            // 'bukti_tf' => 'required|image|mimes:jpeg,png,jpg,gif|max:10240',
+            'bayar' => 'required|numeric|min:0',
+        ], [
+            // 'bukti_tf.required' => 'Bukti transfer harus diunggah.',
+            'bayar.required' => 'Masukkan jumlah pembayaran.',
+            'bayar.numeric' => 'Pembayaran harus berupa angka.',
         ]);
 
-        $validatedData['user_id'] = 1;
+        $order = Order::findOrFail($id);
 
-        Testimoni::create($validatedData);
-        return redirect()->back()->with('success', 'Testimonial berhasil dikirim');
+        $bayar_baru = $order->bayar + $request->bayar;
+        $sisa_bayar_baru = $order->produkVideo->harga_produk - $bayar_baru;
+
+        $order->update([
+            'bayar' => $bayar_baru,
+            'sisa_bayar' => $sisa_bayar_baru
+        ]);
+
+        return redirect()->route('history-order.index')->with('success', 'Pelunasan berhasil dikirim');
     }
 }

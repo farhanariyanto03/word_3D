@@ -53,8 +53,8 @@
                     Contact Information
                 </h2>
                 <div class="mt-6 space-y-3 text-gray-800 text-lg">
-                    <p class="font-medium">Name : <span class="text-gray-600">John Doe</span></p>
-                    <p class="font-medium">No Telp : <span class="text-gray-600">0812-3456-7890</span></p>
+                    <p class="font-medium">Name : <span class="text-gray-600">{{ Auth::user()->nama }}</span></p>
+                    <p class="font-medium">No Telp : <span class="text-gray-600">{{ Auth::user()->no_hp }}</span></p>
                 </div>
             </section>
 
@@ -69,19 +69,20 @@
                     Products purchased
                 </h2>
                 @if ($order)
-                    <div class="mt-6 flex items-center gap-6 border-b pb-6 hover:bg-gray-100 transition rounded-lg p-4">
+                    <div
+                        class="mt-6 flex md:flex-row flex-col items-center text-center gap-6 border-b pb-6 hover:bg-gray-100 transition rounded-lg p-4">
                         <img src="{{ asset('storage/' . $order->gambar_produk) }}"
-                            class="w-32 h-32 rounded-lg shadow-md border" alt="Produk">
+                            class="w-32 h-32 rounded-lg shadow-md border mx-auto" alt="Produk">
                         <div class="flex-1">
-                            <p class="text-lg font-semibold">{{ $order->nama_produk }}</p>
-                            <p class="text-md text-gray-600">Deskripsi: {{ $order->deskripsi_produk }}</p>
+                            <p class="text-lg font-semibold md:text-left">{{ $order->nama_produk }}</p>
+                            <p class="text-md text-gray-600 md:text-left">Deskripsi: {{ $order->deskripsi_produk }}</p>
                         </div>
-                        <p class="text-xl font-bold text-gray-800">Rp
+                        <p class="text-xl font-bold text-gray-800 md:text-left">Rp
                             {{ number_format($order->harga_produk, 0, ',', '.') }}
                         </p>
                     </div>
                 @else
-                    <p class="text-red-500">Produk tidak ditemukan.</p>
+                    <p class="text-red-500 text-center">Produk tidak ditemukan.</p>
                 @endif
             </section>
 
@@ -123,10 +124,17 @@
 
                     <!-- Informasi Transfer Bank -->
                     <div class="mt-6 space-y-4 text-lg border-t pt-4">
-                        <h3 class="text-lg font-semibold text-gray-800">Informasi Transfer Bank:</h3>
+                        <h3 class="text-lg font-semibold text-gray-800">Informasi Transfer Bank :</h3>
                         <p>Bank : <span class="font-medium" id="bankName">-</span></p>
                         <p>No Rekening : <span class="font-medium" id="bankNumber">-</span></p>
                         <p>Atas Nama : <span class="font-medium" id="bankHolder">-</span></p>
+                    </div>
+
+                    <!-- Minimal DP -->
+                    <div class="mt-6 space-y-4 text-lg border-t pt-4">
+                        <h3 class="text-lg font-semibold text-gray-800">NOTES :</h3>
+                        <p>Minimal DP Harus : <span class="font-bold">Rp.
+                                {{ number_format($order->minimal_dp, 0, ',', '.') }}</span></p>
                     </div>
 
                     <!-- Ringkasan Pembayaran -->
@@ -171,9 +179,7 @@
                     <div id="authentication-modal" tabindex="-1" aria-hidden="true"
                         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                         <div class="relative p-4 w-full max-w-md max-h-full">
-                            <!-- Modal content -->
                             <div class="relative bg-white rounded-lg shadow-sm dark:bg-white">
-                                <!-- Modal header -->
                                 <div
                                     class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
                                     <h3 class="text-xl font-semibold dark:text-gray-900">
@@ -192,18 +198,30 @@
                                     </button>
                                 </div>
                                 <!-- Modal body -->
-                                <div class="p-4 md:p-5">
+                                <div class="p-4 md:p-5 mb-5">
+                                    <h3 class="text-lg font-semibold text-gray-800">Informasi Transfer Bank :</h3>
+                                    <p>Bank : <span class="font-medium" id="modalBankName">-</span></p>
+                                    <p>No Rekening : <span class="font-medium" id="modalBankNumber">-</span></p>
+                                    <p>Atas Nama : <span class="font-medium" id="modalBankHolder">-</span></p>
+
                                     <div>
                                         <label for="bukti_tf"
-                                            class="block mb-2 text-sm font-medium dark:text-gray-900">Bukti
-                                            Transfer</label>
+                                            class="block mt-5 text-sm font-medium text-gray-900">Bukti Transfer</label>
                                         <input type="file" name="bukti_tf" id="bukti_tf"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-300 focus:border-gray-300 block w-full p-2.5 dark:bg-white dark:border-white dark:placeholder-gray-400 dark:text-black"
-                                            required />
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-300 focus:border-gray-300 block w-full p-2.5"
+                                            accept="image/*" required />
+
+                                        <div id="previewContainer" class="mt-4 hidden">
+                                            <p class="text-sm text-gray-500">Preview:</p>
+                                            <img id="imagePreview"
+                                                class="mt-2 w-40 h-40 object-cover rounded-lg border" />
+                                        </div>
                                     </div>
+
                                     <button type="submit"
-                                        class="w-full mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Buy
-                                        Now</button>
+                                        class="w-full mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                                        Buy Now
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -266,6 +284,20 @@
             document.getElementById("bankName").textContent = bankName;
             document.getElementById("bankNumber").textContent = bankNumber;
             document.getElementById("bankHolder").textContent = bankHolder;
+
+            // Tampilkan data di dalam modal
+            document.getElementById("modalBankName").textContent = bankName;
+            document.getElementById("modalBankNumber").textContent = bankNumber;
+            document.getElementById("modalBankHolder").textContent = bankHolder;
+        });
+
+        // Saat modal terbuka (klik Check Out), pastikan data terbaru tetap muncul
+        document.querySelector("[data-modal-toggle='authentication-modal']").addEventListener("click", function() {
+            document.getElementById("modalBankName").textContent = document.getElementById("bankName").textContent;
+            document.getElementById("modalBankNumber").textContent = document.getElementById("bankNumber")
+                .textContent;
+            document.getElementById("modalBankHolder").textContent = document.getElementById("bankHolder")
+                .textContent;
         });
 
         // SISA BAYAR
@@ -282,6 +314,24 @@
             // Format angka dengan titik sebagai pemisah ribuan
             document.getElementById("sisaBayar").textContent = sisa.toLocaleString("id-ID");
             document.getElementById("totalBayar").textContent = bayar.toLocaleString("id-ID");
+        });
+
+        // Preview Bukti Transfer
+        document.getElementById('bukti_tf').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            const previewContainer = document.getElementById('previewContainer');
+            const imagePreview = document.getElementById('imagePreview');
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagePreview.src = e.target.result;
+                    previewContainer.classList.remove('hidden');
+                }
+                reader.readAsDataURL(file);
+            } else {
+                previewContainer.classList.add('hidden');
+            }
         });
     </script>
 </body>

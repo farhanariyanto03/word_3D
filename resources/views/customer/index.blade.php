@@ -32,15 +32,26 @@
                 <a href="#" class="nav-link text-green-700 font-semibold">Service</a>
                 <a href="#" class="nav-link text-green-700 font-semibold">Product</a>
                 <a href="#" class="nav-link text-green-700 font-semibold">Testimonial</a>
+                <a href="#" class="nav-link text-green-700 font-semibold">History</a>
             </div>
 
             <!-- Button -->
-            <div class="hidden md:block">
-                <a href="#"
-                    class="border-2 border-green-700 text-green-700 px-5 py-2 rounded-full text-lg font-semibold hover:bg-green-700 hover:text-white transition duration-300 flex items-center space-x-2">
-                    Login
-                </a>
-            </div>
+            @guest
+                <div class="hidden md:block">
+                    <a href="{{ route('login.index') }}"
+                        class="border-2 border-green-700 text-green-700 px-5 py-2 rounded-full text-lg font-semibold hover:bg-green-700 hover:text-white transition duration-300 flex items-center space-x-2">
+                        Login
+                    </a>
+                </div>
+            @endguest
+            @auth
+                <div class="hidden md:block">
+                    <a href="{{ route('logout') }}"
+                        class="border-2 border-red-700 text-red-700 px-5 py-2 rounded-full text-lg font-semibold hover:bg-red-700 hover:text-white transition duration-300 flex items-center space-x-2">
+                        Logout
+                    </a>
+                </div>
+            @endauth
 
             <!-- Hamburger Menu (Mobile) -->
             <button id="menu-btn" class="md:hidden text-green-700 focus:outline-none">
@@ -59,10 +70,19 @@
             <a href="#" class="nav-link hover:text-green-700">Service</a>
             <a href="#" class="nav-link hover:text-green-700">Product</a>
             <a href="#" class="nav-link hover:text-green-700">Testimonial</a>
-            <a href="#"
-                class="border-2 border-green-700 text-green-700 px-6 py-3 rounded-full text-lg font-semibold hover:bg-green-700 hover:text-white transition duration-300 flex items-center space-x-2">
-                Login
-            </a>
+            <a href="#" class="nav-link hover:text-green-700">History</a>
+            @guest
+                <a href="{{ route('login.index') }}"
+                    class="border-2 border-green-700 text-green-700 px-6 py-3 rounded-full text-lg font-semibold hover:bg-green-700 hover:text-white transition duration-300 flex items-center space-x-2">
+                    Login
+                </a>
+            @endguest
+            @auth
+                <a href="{{ route('login.index') }}"
+                    class="border-2 border-red-700 text-red-700 px-6 py-3 rounded-full text-lg font-semibold hover:bg-red-700 hover:text-white transition duration-300 flex items-center space-x-2">
+                    Logout
+                </a>
+            @endauth
         </div>
     </nav>
 
@@ -159,10 +179,12 @@
                         <p class="mt-2 text-gray-400 text-sm">{{ $p->deskripsi_produk }}</p>
                         <p class="mt-2 text-green-400 font-bold text-xl">Rp.
                             {{ number_format($p->harga_produk, 0, ',', '.') }}</p>
-                        <a href="{{ route('order.index', Crypt::encryptString($p->id)) }}"
-                            class="mt-4 inline-block bg-green-600 text-white px-6 py-3 rounded-full font-semibold transition hover:bg-green-500 hover:shadow-lg animate-pulse">
-                            <i class="ri-shopping-cart-2-line mr-2"></i> Buy Now
-                        </a>
+                        @auth
+                            <a href="{{ route('order.index', Crypt::encryptString($p->id)) }}"
+                                class="mt-4 inline-block bg-green-600 text-white px-6 py-3 rounded-full font-semibold transition hover:bg-green-500 hover:shadow-lg animate-pulse">
+                                <i class="ri-shopping-cart-2-line mr-2"></i> Buy Now
+                            </a>
+                        @endauth
                     </div>
                 </div>
             @endforeach

@@ -146,13 +146,17 @@
                                                 <i class="ri-check-double-fill text-xl"></i>
                                             </button>
                                         </form>
-                                        <button type="submit"
+                                        <a href="{{ route('pesanan.invoice', $o->id) }}"
                                             class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
                                             <i class="ri-download-line text-xl"></i>
-                                        </button>
+                                        </a>
                                         <button type="submit"
                                             class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition">
                                             <i class="ri-send-plane-fill text-xl"></i>
+                                        </button>
+                                        <button type="submit"
+                                            class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition">
+                                            <i class="ri-whatsapp-line text-xl"></i>
                                         </button>
                                     </div>
                                 </td>

@@ -23,23 +23,35 @@
     {{-- Navbar --}}
     <nav class="bg-white fixed top-0 left-0 w-full z-50 shadow-md">
         <div class="max-w-7xl mx-auto flex items-center justify-between h-20 px-6">
-            <a href="{{ route('customer.index') }}"><img src="{{ asset('assets/images/LOGO.png') }}" class="w-32" alt=""></a>
+            {{-- <h1 class="text-green-700 font-semibold text-lg">WORD 3D</h1> --}}
+            <img src="{{ asset('assets/images/LOGO.png') }}" class="w-32" alt="">
 
             <!-- Menu (Hidden di Mobile) -->
-            <div class="hidden md:flex space-x-6">
-                <a href="#" class="nav-link active text-green-700 font-semibold hover:text-green-500">Home</a>
-                <a href="#" class="nav-link text-green-700 font-semibold hover:text-green-500">Service</a>
-                <a href="#" class="nav-link text-green-700 font-semibold hover:text-green-500">Product</a>
-                <a href="#" class="nav-link text-green-700 font-semibold hover:text-green-500">Testimonial</a>
+            <div class="hidden md:flex space-x-5">
+                <a href="#" class="nav-link active text-green-700 font-semibold">Home</a>
+                <a href="#" class="nav-link text-green-700 font-semibold">Service</a>
+                <a href="#" class="nav-link text-green-700 font-semibold">Product</a>
+                <a href="#" class="nav-link text-green-700 font-semibold">Testimonial</a>
+                <a href="#" class="nav-link text-green-700 font-semibold">History</a>
             </div>
 
             <!-- Button -->
-            <div class="hidden md:block">
-                <a href="#"
-                    class="border-2 border-green-700 text-green-700 px-5 py-2 rounded-full text-lg font-semibold hover:bg-green-700 hover:text-white transition duration-300">
-                    Login
-                </a>
-            </div>
+            @guest
+                <div class="hidden md:block">
+                    <a href="{{ route('login.index') }}"
+                        class="border-2 border-green-700 text-green-700 px-5 py-2 rounded-full text-lg font-semibold hover:bg-green-700 hover:text-white transition duration-300 flex items-center space-x-2">
+                        Login
+                    </a>
+                </div>
+            @endguest
+            @auth
+                <div class="hidden md:block">
+                    <a href="{{ route('logout') }}"
+                        class="border-2 border-red-700 text-red-700 px-5 py-2 rounded-full text-lg font-semibold hover:bg-red-700 hover:text-white transition duration-300 flex items-center space-x-2">
+                        Logout
+                    </a>
+                </div>
+            @endauth
 
             <!-- Hamburger Menu (Mobile) -->
             <button id="menu-btn" class="md:hidden text-green-700 focus:outline-none">
@@ -54,36 +66,84 @@
         <div id="mobile-menu"
             class="hidden fixed inset-0 bg-black bg-opacity-90 backdrop-blur-lg flex flex-col items-center justify-center space-y-6 text-white text-lg transition-all duration-600">
             <button id="close-menu" class="absolute top-6 right-6 text-white text-3xl">&times;</button>
-            <a href="#" class="nav-link active hover:text-green-500">Home</a>
-            <a href="#" class="nav-link hover:text-green-500">Service</a>
-            <a href="#" class="nav-link hover:text-green-500">Product</a>
-            <a href="#" class="nav-link hover:text-green-500">Testimonial</a>
-            <a href="#"
-                class="border-2 border-green-700 text-green-700 px-6 py-3 rounded-full text-lg font-semibold hover:bg-green-700 hover:text-white transition duration-300">
-                Login
-            </a>
+            <a href="#" class="nav-link active hover:text-green-700">Home</a>
+            <a href="#" class="nav-link hover:text-green-700">Service</a>
+            <a href="#" class="nav-link hover:text-green-700">Product</a>
+            <a href="#" class="nav-link hover:text-green-700">Testimonial</a>
+            <a href="#" class="nav-link hover:text-green-700">History</a>
+            @guest
+                <a href="{{ route('login.index') }}"
+                    class="border-2 border-green-700 text-green-700 px-6 py-3 rounded-full text-lg font-semibold hover:bg-green-700 hover:text-white transition duration-300 flex items-center space-x-2">
+                    Login
+                </a>
+            @endguest
+            @auth
+                <a href="{{ route('login.index') }}"
+                    class="border-2 border-red-700 text-red-700 px-6 py-3 rounded-full text-lg font-semibold hover:bg-red-700 hover:text-white transition duration-300 flex items-center space-x-2">
+                    Logout
+                </a>
+            @endauth
         </div>
     </nav>
 
     <!-- History Section -->
-    <div class="max-w-7xl mx-auto px-6 pt-28">
-        <h2 class="text-4xl font-bold text-center mb-10 text-gray-800">📦 History Pemesanan</h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Card Pemesanan -->
+    <div class="max-w-7xl mx-auto px-6 pt-28 mb-10">
+        <h2 class="text-4xl font-bold text-center mb-12 text-gray-900 drop-shadow-md">
+            📦 History Pemesanan
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             @foreach ($order as $o)
                 <div
-                    class="bg-white rounded-xl shadow-lg p-6 flex items-center space-x-6 border-t-4 border-green-500 transition-transform duration-300 hover:scale-105">
+                    class="relative bg-white bg-opacity-60 backdrop-blur-lg rounded-xl shadow-lg p-6 md:p-8
+                            border-t-4 border-green-500 transition-all duration-300 hover:scale-105 hover:shadow-xl
+                            w-full max-w-lg mx-auto flex flex-col md:flex-row items-center md:items-start space-y-4
+                            md:space-y-0 md:space-x-6">
                     <img src="{{ asset('storage/' . $o->produkVideo->gambar_produk) }}" alt="Produk A"
-                        class="w-24 h-24 object-cover rounded-lg">
-                    <div class="flex-1">
-                        <h3 class="text-xl font-semibold text-gray-800">{{ $o->produkVideo->nama_produk }}</h3>
-                        <p class="text-sm text-gray-600">ID Pesanan: <span class="font-medium">INV123456</span></p>
-                        <p class="text-sm text-gray-600">Total: <span class="font-medium text-green-600">Rp.
-                                200.000</span></p>
-                        <p class="text-sm text-gray-600">Tanggal: <span class="font-medium">2025-03-05</span></p>
+                        class="w-32 h-32 object-cover rounded-lg md:w-40 md:h-40 shadow-md">
+                    <div class="flex-1 text-center md:text-left space-y-3">
+                        <h3 class="text-2xl font-semibold text-gray-900 drop-shadow-sm">
+                            {{ $o->produkVideo->nama_produk }}
+                        </h3>
+                        <p class="text-sm md:text-base text-gray-600">
+                            ID Pesanan: <span class="font-medium">{{ $o->id }}</span>
+                        </p>
+                        <p class="text-sm md:text-base text-gray-600">
+                            Harga Video:
+                            <span class="font-medium text-green-600">
+                                Rp. {{ number_format($o->produkVideo->harga_produk, 0, ',', '.') }}
+                            </span>
+                        </p>
+                        <p class="text-sm md:text-base text-gray-600">
+                            Bayar:
+                            <span class="font-medium text-green-600">
+                                Rp. {{ number_format($o->bayar, 0, ',', '.') }}
+                            </span>
+                        </p>
+
+                        @if ($o->sisa_bayar > 0)
+                            <p class="text-sm md:text-base text-gray-600">
+                                Sisa harus dibayar:
+                                <span class="font-medium text-red-600">
+                                    Rp. {{ number_format($o->sisa_bayar, 0, ',', '.') }}
+                                </span>
+                            </p>
+                            <button onclick="openModal('{{ $o->id }}')"
+                                class="mt-3 bg-red-500 text-white text-xs md:text-sm px-5 py-2 rounded-full hover:bg-red-600 transition shadow-md">
+                                💳 Pelunasan
+                            </button>
+                        @endif
+
+                        <p class="text-sm md:text-base text-gray-600">
+                            Tanggal: <span
+                                class="font-medium">{{ \Carbon\Carbon::parse($o->tanggal)->format('d-m-Y') }}
+                            </span>
+                        </p>
+
                         <span
-                            class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full inline-flex mt-2 border border-green-500">Selesai</span>
+                            class="inline-flex items-center mt-2 px-4 py-1 text-sm font-medium rounded-full
+                                    border {{ $o->status == 'Lunas' ? 'bg-green-100 text-green-700 border-green-500' : 'bg-yellow-100 text-yellow-700 border-yellow-500' }}">
+                            {{ $o->status }}
+                        </span>
                     </div>
                 </div>
             @endforeach
@@ -91,9 +151,10 @@
     </div>
 
     {{-- Modal --}}
-    {{-- @if () --}}
+    @if (!$testimoni)
         <div id="testimonial-modal"
             class="fixed inset-30 flex items-start justify-center opacity-0 pointer-events-none transition-opacity duration-300 ease-out">
+            <div class="fixed inset-0 bg-black opacity-70"></div>
             <form action="{{ route('testimonial.store') }}" method="POST">
                 @csrf
                 <div id="modal-content"
@@ -122,7 +183,32 @@
                 </div>
             </form>
         </div>
-    {{-- @endif --}}
+    @endif
+
+    @foreach ($order as $o)
+        <div id="modal-{{ $o->id }}"
+            class="hidden fixed inset-0 bg-black/70 flex justify-center items-center">
+            <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Upload Bukti Transfer Pelunasan : </h3>
+                <form action="{{ route('pelunasan.update', ['id' => Crypt::encryptString($o->id)]) }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <label for="bayar">Sisa yang harus dibayar</label>
+                    <input type="number" name="bayar" value="{{ $o->sisa_bayar }}"
+                        class="block w-full text-sm border p-2 rounded-md mb-4">
+                    <label for="bukti_transfer">Bukti Transfer</label>
+                    <input type="file" name="bukti_transfer" accept="image/*"
+                        class="block w-full text-sm border p-2 rounded-md mb-4">
+                    <div class="flex justify-end space-x-2">
+                        <button type="button" onclick="closeModal('{{ $o->id }}')"
+                            class="bg-gray-500 text-white px-4 py-2 rounded-lg">Batal</button>
+                        <button type="submit"
+                            class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">Kirim</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    @endforeach
 
     <!-- Footer Section -->
     <footer class="bg-green-700 text-white py-10 px-6 md:px-12 mt-auto">
@@ -199,6 +285,18 @@
 
             // Simpan nilai rating ke dalam input hidden
             document.getElementById('rating').value = stars;
+            console.log(stars);
+
+        }
+    </script>
+
+    <script>
+        function openModal(id) {
+            document.getElementById("modal-" + id).classList.remove("hidden");
+        }
+
+        function closeModal(id) {
+            document.getElementById("modal-" + id).classList.add("hidden");
         }
     </script>
 
