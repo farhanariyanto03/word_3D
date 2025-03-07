@@ -10,7 +10,7 @@ class Order extends Model
     protected $primaryKey = 'id';
     public $incrementing = false; // Nonaktifkan auto-increment
     protected $keyType = 'string'; // Set ID sebagai string
-    protected $fillable = ['id', 'user_id', 'produk_video_id', 'nomor_rekening_id', 'bayar', 'sisa_bayar', 'status', 'bukti_tf'];
+    protected $fillable = ['id', 'user_id', 'produk_video_id', 'nomor_rekening_id', 'bayar', 'sisa_bayar', 'status', 'bukti_tf', 'link_video', 'catatan'];
 
     protected static function boot()
     {

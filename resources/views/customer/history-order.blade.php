@@ -23,8 +23,9 @@
     {{-- Navbar --}}
     <nav class="bg-white fixed top-0 left-0 w-full z-50 shadow-md">
         <div class="max-w-7xl mx-auto flex items-center justify-between h-20 px-6">
-            {{-- <h1 class="text-green-700 font-semibold text-lg">WORD 3D</h1> --}}
-            <img src="{{ asset('assets/images/LOGO.png') }}" class="w-32" alt="">
+            <a href="{{ route('customer.index') }}">
+                <img src="{{ asset('assets/images/LOGO.png') }}" class="w-32" alt="">
+            </a>
 
             <!-- Menu (Hidden di Mobile) -->
             <div class="hidden md:flex space-x-5">

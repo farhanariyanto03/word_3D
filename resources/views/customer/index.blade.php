@@ -23,16 +23,32 @@
     {{-- Navbar --}}
     <nav class="bg-white fixed top-0 left-0 w-full z-50 shadow-md">
         <div class="max-w-7xl mx-auto flex items-center justify-between h-20 px-6">
-            {{-- <h1 class="text-green-700 font-semibold text-lg">WORD 3D</h1> --}}
-            <img src="{{ asset('assets/images/LOGO.png') }}" class="w-32" alt="">
+            <a href="{{ route('customer.index') }}">
+                <img src="{{ asset('assets/images/LOGO.png') }}" class="w-32" alt="">
+            </a>
 
-            <!-- Menu (Hidden di Mobile) -->
+            <!-- Desktop Menu -->
             <div class="hidden md:flex space-x-5">
-                <a href="#" class="nav-link active text-green-700 font-semibold">Home</a>
-                <a href="#" class="nav-link text-green-700 font-semibold">Service</a>
-                <a href="#" class="nav-link text-green-700 font-semibold">Product</a>
-                <a href="#" class="nav-link text-green-700 font-semibold">Testimonial</a>
-                <a href="#" class="nav-link text-green-700 font-semibold">History</a>
+                <a href="{{ route('customer.index') }}"
+                    class="nav-link active text-green-700 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-1 after:bg-green-700 after:transition-all after:duration-300 hover:after:w-full">
+                    Home
+                </a>
+                <a href="#service"
+                    class="nav-link text-green-700 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-1 after:bg-green-700 after:transition-all after:duration-300 hover:after:w-full">
+                    Service
+                </a>
+                <a href="#"
+                    class="nav-link text-green-700 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-1 after:bg-green-700 after:transition-all after:duration-300 hover:after:w-full">
+                    Product
+                </a>
+                <a href="#"
+                    class="nav-link text-green-700 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-1 after:bg-green-700 after:transition-all after:duration-300 hover:after:w-full">
+                    Testimonial
+                </a>
+                <a href="#"
+                    class="nav-link text-green-700 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-1 after:bg-green-700 after:transition-all after:duration-300 hover:after:w-full">
+                    History
+                </a>
             </div>
 
             <!-- Button -->
@@ -66,11 +82,26 @@
         <div id="mobile-menu"
             class="hidden fixed inset-0 bg-black bg-opacity-90 backdrop-blur-lg flex flex-col items-center justify-center space-y-6 text-white text-lg transition-all duration-600">
             <button id="close-menu" class="absolute top-6 right-6 text-white text-3xl">&times;</button>
-            <a href="#" class="nav-link active hover:text-green-700">Home</a>
-            <a href="#" class="nav-link hover:text-green-700">Service</a>
-            <a href="#" class="nav-link hover:text-green-700">Product</a>
-            <a href="#" class="nav-link hover:text-green-700">Testimonial</a>
-            <a href="#" class="nav-link hover:text-green-700">History</a>
+            <a href="#"
+                class="nav-link active text-green-400 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-1 after:bg-green-400 after:transition-all after:duration-300 hover:after:w-full">
+                Home
+            </a>
+            <a href="#"
+                class="nav-link text-white font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-1 after:bg-green-400 after:transition-all after:duration-300 hover:after:w-full hover:text-green-400">
+                Service
+            </a>
+            <a href="#"
+                class="nav-link text-white font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-1 after:bg-green-400 after:transition-all after:duration-300 hover:after:w-full hover:text-green-400">
+                Product
+            </a>
+            <a href="#"
+                class="nav-link text-white font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-1 after:bg-green-400 after:transition-all after:duration-300 hover:after:w-full hover:text-green-400">
+                Testimonial
+            </a>
+            <a href="#"
+                class="nav-link text-white font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-1 after:bg-green-400 after:transition-all after:duration-300 hover:after:w-full hover:text-green-400">
+                History
+            </a>
             @guest
                 <a href="{{ route('login.index') }}"
                     class="border-2 border-green-700 text-green-700 px-6 py-3 rounded-full text-lg font-semibold hover:bg-green-700 hover:text-white transition duration-300 flex items-center space-x-2">
@@ -87,7 +118,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section
+    <section id="service"
         class="relative w-full h-screen bg-fixed bg-center bg-cover bg-no-repeat text-white flex items-center justify-center"
         style="background-image: url('{{ asset('assets/images/Driver.00_01_10_14.Still003.png') }}');">
         <div class="absolute inset-0 bg-black opacity-80"></div> <!-- Overlay -->
@@ -185,6 +216,10 @@
                                 <i class="ri-shopping-cart-2-line mr-2"></i> Buy Now
                             </a>
                         @endauth
+                        <a href="{{ route('order.show-all', Crypt::encryptString($p->id)) }}"
+                            class="mt-8 flex items-center justify-center text-blue-400">
+                            Show All Order <i class="ri-arrow-right-line ml-2"></i>
+                        </a>
                     </div>
                 </div>
             @endforeach
@@ -277,6 +312,26 @@
         </div>
     </footer>
 
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener("click", function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute("href").substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    const navbarHeight = document.querySelector("nav").offsetHeight;
+                    const targetPosition = targetElement.offsetTop - navbarHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+    </script>
     <script>
         AOS.init();
     </script>

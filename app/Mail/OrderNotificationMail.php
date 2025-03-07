@@ -12,14 +12,16 @@ use Illuminate\Queue\SerializesModels;
 class OrderNotificationMail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $customerName;
 
-    /**
-     * Create a new message instance.
-     */
-    public function __construct($customerName)
+    public $order;
+    public $customerName;
+    public $customerEmail;
+
+    public function __construct($order, $customerName, $customerEmail)
     {
+        $this->order = $order;
         $this->customerName = $customerName;
+        $this->customerEmail = $customerEmail;
     }
 
     /**
@@ -42,13 +44,6 @@ class OrderNotificationMail extends Mailable
         );
     }
 
-    public function build()
-    {
-        return $this->subject('Pesanan Baru')
-                    ->view('emails.order_notification')
-                    ->with(['customerName' => $this->customerName]);
-    }
-
     /**
      * Get the attachments for the message.
      *
@@ -57,5 +52,16 @@ class OrderNotificationMail extends Mailable
     public function attachments(): array
     {
         return [];
+    }
+
+    public function build()
+    {
+        return $this->from($this->customerEmail) // Menggunakan email customer sebagai pengirim
+            ->subject('Pesanan Baru dari ' . $this->customerName)
+            ->view('emails.order_notification')
+            ->with([
+                'order' => $this->order,
+                'customerName' => $this->customerName,
+            ]);
     }
 }

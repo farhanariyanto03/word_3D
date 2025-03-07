@@ -7,9 +7,11 @@ use App\Models\Testimoni;
 use App\Models\ProdukVideo;
 use Illuminate\Http\Request;
 use App\Models\NomorRekening;
+use App\Mail\OrderNotificationMail;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Crypt;
 
 class LandingPageController extends Controller
@@ -74,9 +76,13 @@ class LandingPageController extends Controller
                 $validatedData['bukti_tf'] = $filePath;
             }
 
-            Order::create($validatedData);
+            $newOrder = Order::create($validatedData);
 
-            return redirect()->route('history-order.index')->with('success', 'Pesanan berhasil dibuat');
+            // Kirim email dari email customer ke admin
+            $adminEmail = "justplaycorporate@gmail.com"; // Ganti dengan email admin
+            Mail::to($adminEmail)->send(new OrderNotificationMail($newOrder, $user->nama, $user->email, $order->nama_produk, $order->harga_produk, $order->bayar, $order->sisa_bayar));
+
+            return redirect()->route('history-order.index')->with('success', 'Pesanan berhasil dibuat dan email telah dikirim ke admin.');
         } catch (\Exception $e) {
             Log::error('Order Store Error: ' . $e->getMessage());
             return redirect()->back()->withErrors($e->getMessage())->withInput();
@@ -116,24 +122,64 @@ class LandingPageController extends Controller
     {
         $id = Crypt::decryptString($id);
         $validatedData = $request->validate([
-            // 'bukti_tf' => 'required|image|mimes:jpeg,png,jpg,gif|max:10240',
             'bayar' => 'required|numeric|min:0',
+            'bukti_transfer' => 'required|image|mimes:jpeg,png,jpg,gif|max:10240',
         ], [
-            // 'bukti_tf.required' => 'Bukti transfer harus diunggah.',
             'bayar.required' => 'Masukkan jumlah pembayaran.',
             'bayar.numeric' => 'Pembayaran harus berupa angka.',
+            'bukti_transfer.required' => 'Bukti transfer harus diunggah.',
+            'bukti_transfer.image' => 'File harus berupa gambar.',
         ]);
 
         $order = Order::findOrFail($id);
+
+        if ($request->hasFile('bukti_transfer')) {
+            $file = $request->file('bukti_transfer');
+            $filename = 'bukti_tf/' . time() . '_' . $file->hashName();
+            $file->storeAs('public', $filename);
+
+            $buktiLama = $order->bukti_tf ? explode(',', $order->bukti_tf) : [];
+            $buktiLama[] = $filename;
+            $bukti_tf_baru = implode(',', $buktiLama);
+        }
 
         $bayar_baru = $order->bayar + $request->bayar;
         $sisa_bayar_baru = $order->produkVideo->harga_produk - $bayar_baru;
 
         $order->update([
             'bayar' => $bayar_baru,
-            'sisa_bayar' => $sisa_bayar_baru
+            'sisa_bayar' => $sisa_bayar_baru,
+            'bukti_tf' => $bukti_tf_baru
         ]);
 
         return redirect()->route('history-order.index')->with('success', 'Pelunasan berhasil dikirim');
+    }
+
+    public function showAllOrder()
+    {
+        $orders = Order::with('user')->get();
+
+        $orders->transform(function ($order) {
+            switch ($order->status) {
+                case 'sudah bayar':
+                    $order->progress = 33.33;
+                    $order->color = 'bg-yellow-500';
+                    break;
+                case 'proses':
+                    $order->progress = 66.66;
+                    $order->color = 'bg-blue-500';
+                    break;
+                case 'selesai':
+                    $order->progress = 100;
+                    $order->color = 'bg-green-500';
+                    break;
+                default:
+                    $order->progress = 0;
+                    $order->color = 'bg-gray-500';
+            }
+            return $order;
+        });
+
+        return view('customer.show-all-order', compact('orders'));
     }
 }

@@ -57,7 +57,8 @@
             margin-top: 10px;
         }
 
-        th, td {
+        th,
+        td {
             border: 1px solid #ddd;
             padding: 10px;
             text-align: left;
@@ -78,7 +79,8 @@
 <body>
     <div class="invoice-container">
         <div class="invoice-header">
-            <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/images/LOGO.png'))) }}" alt="Company Logo">
+            <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/images/LOGO.png'))) }}"
+                alt="Company Logo">
             <div class="invoice-title" style="color: black;">Invoice Pemesanan</div>
         </div>
 
@@ -87,21 +89,31 @@
             <p><strong>Tanggal:</strong> {{ $order->created_at }}</p>
         </div>
 
-        <h3>Detail Pesanan</h3>
+        <h3>Detail Pekerjaan</h3>
         <table>
             <thead>
                 <tr>
                     <th>Nama Produk</th>
-                    <th>Harga Produk</th>
                     <th>Detail</th>
-                    <th>Syarat dan Ketentuan</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>{{ $order->produkVideo->nama_produk }}</td>
-                    <td>Rp. {{ number_format($order->produkVideo->harga_produk, 0, ',', '.') }}</td>
                     <td>{{ $order->produkVideo->deskripsi_produk }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Syarat & Ketentuan</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Syarat dan Ketentuan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
                     <td>{{ $order->produkVideo->syarat_ketentuan }}</td>
                 </tr>
             </tbody>
@@ -120,11 +132,33 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $order->user->name }}</td>
+                    <td>{{ $order->user->nama }}</td>
                     <td>Rp. {{ number_format($order->produkVideo->harga_produk, 0, ',', '.') }}</td>
                     <td>Rp. {{ number_format($order->bayar, 0, ',', '.') }}</td>
                     <td>Rp. {{ number_format($order->sisa_bayar, 0, ',', '.') }}</td>
                     <td class="status-paid">{{ $order->status }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>FREELANCER</th>
+                    <th>PELANGGAN</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/images/TTD.png'))) }}"
+                        alt="Company Logo">
+                    </t>
+                    <td ></td>
+                </tr>
+                <tr>
+                    <td>ARVAN</td>
+                    <td>{{ $order->user->nama }}</td>
                 </tr>
             </tbody>
         </table>

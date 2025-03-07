@@ -28,6 +28,29 @@ class PesananController extends Controller
         return redirect()->route('pesanan.index')->with('success', 'Pesanan berhasil diupdate');
     }
 
+    public function deleteOrder($id)
+    {
+        $order = Order::find($id);
+        $order->delete();
+
+        return redirect()->route('pesanan.index')->with('success', 'Pesanan berhasil dihapus');
+    }
+
+    public function updateOrder(Request $request, $id)
+    {
+        $order = Order::find($id);
+        $validatedData = $request->validate([
+            'link_vidio' => 'required',
+            'catatan' => 'nullable'
+        ]);
+
+        $order->link_vidio = $validatedData['link_vidio'];
+        $order->catatan = $validatedData['catatan'];
+        $order->save();
+
+        return redirect()->route('pesanan.index')->with('success', 'Pesanan berhasil diupdate');
+    }
+
     public function updateSelesai($id)
     {
         $order = Order::find($id);
@@ -43,6 +66,6 @@ class PesananController extends Controller
 
         $pdf = Pdf::loadView('admin.pesanan.invoice', compact('order'));
 
-        return $pdf->download('invoice_' . $order->user->name . '.pdf');
+        return $pdf->download('invoice_' . $order->user->nama . '.pdf');
     }
 }

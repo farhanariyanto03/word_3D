@@ -28,8 +28,10 @@ Route::prefix('admin')->group(function () {
     Route::resource('nomor-rekening', NomorRekeningController::class);
     Route::get('/pesanan', [PesananController::class, 'index'])->name('pesanan.index');
     Route::put('/pesanan/{id}/proses', [PesananController::class, 'updateProses'])->name('pesanan.proses');
+    Route::delete('/pesanan/{id}/tolak', [PesananController::class, 'deleteOrder'])->name('pesanan.tolak');
     Route::put('/pesanan/{id}/selesai', [PesananController::class, 'updateSelesai'])->name('pesanan.selesai');
     Route::get('/pesanan/{id}/cetak-invoice', [PesananController::class, 'cetakInvoice'])->name('pesanan.invoice');
+    Route::put('/pesanan/{id}/link-video', [PesananController::class, 'updateOrder'])->name('pesanan.link-video');
 });
 
 Route::prefix('customer')->group(function () {
@@ -39,4 +41,5 @@ Route::prefix('customer')->group(function () {
     Route::get('/history-order', [LandingPageController::class, 'historyOrder'])->name('history-order.index');
     Route::post('/testimonial', [LandingPageController::class, 'testimonialStore'])->name('testimonial.store');
     Route::put('/pelunasan/{id}', [LandingPageController::class, 'pelunasan'])->name('pelunasan.update');
+    Route::get('/order/{id}/show-all', [LandingPageController::class, 'showAllOrder'])->name('order.show-all');
 });
