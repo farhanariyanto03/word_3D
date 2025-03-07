@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.css">
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
-    <link rel="stylesheet" href="{{ asset('build/assets/app-CiPyLyTK.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/app-CacknrTH.css') }}">
     <title>{{ $title }}</title>
 </head>
 
@@ -117,6 +117,15 @@
                             {{ request()->routeIs('video-yt.index') ? 'bg-green-500 dark:bg-green-800 text-white' : 'text-gray-900' }}">
                         <i class="ri-file-video-line text-3xl"></i>
                         <span class="ms-3 font-semibold">Vidio YT</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('testimoni.index') }}"
+                        class="flex items-center p-2 rounded-lg dark:text-white hover:bg-green-500 dark:hover:bg-green-200 group
+                            {{ request()->routeIs('testimoni.index') ? 'bg-green-500 dark:bg-green-800 text-white' : 'text-gray-900' }}">
+                        <i class="ri-feedback-line text-3xl"></i>
+                        <span class="ms-3 font-semibold">Testimoni</span>
                     </a>
                 </li>
             </ul>

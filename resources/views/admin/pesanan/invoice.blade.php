@@ -79,7 +79,7 @@
 <body>
     <div class="invoice-container">
         <div class="invoice-header">
-            <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/images/LOGO.png'))) }}"
+            <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/images/LOGO-HIJAU.png'))) }}"
                 alt="Company Logo">
             <div class="invoice-title" style="color: black;">Invoice Pemesanan</div>
         </div>

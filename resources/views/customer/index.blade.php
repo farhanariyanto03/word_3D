@@ -16,7 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     {{-- @vite('resources/css/app.css')
     @vite('resources/js/app.js') --}}
-    <link rel="stylesheet" href="{{ asset('build/assets/app-CiPyLyTK.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/app-CacknrTH.css') }}">
     <title>WORLD 3D</title>
 </head>
 
@@ -25,7 +25,8 @@
     <nav class="bg-white fixed top-0 left-0 w-full z-50 shadow-md">
         <div class="max-w-7xl mx-auto flex items-center justify-between h-20 px-6">
             <a href="{{ route('customer.index') }}">
-                <img src="{{ asset('assets/images/fj-jf-logo-letter-designs-2-3b8bf7313ef88e1ab5bee6199d6cDf70c0f36fc4fb70b6fb950e63b6b7c0ccbcf (1).png') }}" class="w-32" alt="">
+                <img src="{{ asset('assets/images/fj-jf-logo-letter-designs-2-3b8bf7313ef88e1ab5bee6199d6cDf70c0f36fc4fb70b6fb950e63b6b7c0ccbcf (1).png') }}"
+                    class="w-32" alt="">
             </a>
 
             <!-- Desktop Menu -->
@@ -126,7 +127,7 @@
         <div class="relative text-center px-6 md:px-12 max-w-4xl">
             <h1 data-aos="fade-up" data-aos-duration="1000"
                 class="text-5xl md:text-7xl font-extrabold text-green-500 drop-shadow-lg">
-                Revolusi Pengalaman 3D Anda Lebih Hidup, Lebih Realistis, Lebih Imersif!
+                Justplay Corporate, Dari Kode ke Kreativitas, Dari Imajinasi ke Realitas!
             </h1>
             <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000"
                 class="mt-6 text-lg md:text-2xl text-gray-300 font-light">
@@ -150,7 +151,8 @@
                 Mengapa Memilih Video 3D Kami?
             </h2>
             <p class="mt-4 text-lg text-gray-600" data-aos="fade-up" data-aos-delay="200">
-                Kami menawarkan pengalaman 3D yang mendalam dan berkualitas tinggi yang mendefinisikan ulang penceritaan visual.
+                Kami menawarkan pengalaman 3D yang mendalam dan berkualitas tinggi yang mendefinisikan ulang penceritaan
+                visual.
             </p>
         </div>
 
@@ -163,7 +165,8 @@
                     <i class="ri-film-line text-3xl"></i>
                 </div>
                 <h3 class="text-2xl font-semibold mt-12">Kualitas Ultra HD</h3>
-                <p class="mt-4 text-lg text-gray-100">Nikmati video 3D sebening kristal dengan resolusi menakjubkan.</p>
+                <p class="mt-4 text-lg text-gray-100">Nikmati video 3D sebening kristal dengan resolusi menakjubkan.
+                </p>
             </div>
 
             <!-- Card 2 -->
@@ -174,7 +177,8 @@
                     <i class="ri-goggles-line text-3xl"></i>
                 </div>
                 <h3 class="text-2xl font-semibold mt-12">Pengalaman Imersif</h3>
-                <p class="mt-4 text-lg text-gray-100">Rasakan Pengalaman Imersif Jelajahi Dunia 3D yang Memukau dengan Konten Kami!</p>
+                <p class="mt-4 text-lg text-gray-100">Rasakan Pengalaman Imersif Jelajahi Dunia 3D yang Memukau dengan
+                    Konten Kami!</p>
             </div>
 
             <!-- Card 3 -->
@@ -193,8 +197,10 @@
     <!-- Products Section -->
     <section class="bg-black text-white py-16 px-6 md:px-12" id="products">
         <div class="max-w-6xl mx-auto text-center" data-aos="fade-up">
-            <h2 class="text-4xl font-extrabold text-green-500">Koleksi Video 3D Eksklusif</h2>
-            <p class="mt-4 text-lg text-gray-400">Jelajahi video 3D berkualitas tinggi kami yang dibuat untuk hiburan & bisnis.</p>
+            <h2 class="text-4xl font-extrabold text-green-500">CATALOG VIDEO 3D ANIMASI</h2>
+            <p class="mt-4 text-lg text-gray-400">Silahkan order sesuai kebutuhan anda , hubungi contact di admin untuk
+                konsultasi.
+            </p>
         </div>
 
         <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -244,7 +250,7 @@
                                 class="bg-white p-6 rounded-xl shadow-lg text-center border border-gray-200 transform hover:scale-105 transition duration-300">
                                 <i
                                     class="ri-user-fill text-7xl rounded-full mx-auto border-4 border-green-500 shadow-md"></i>
-                                <p class="mt-4 text-xl font-bold text-gray-800">{{ $t->user->name }}</p>
+                                <p class="mt-4 text-xl font-bold text-gray-800">{{ $t->user->nama }}</p>
                                 @for ($i = 1; $i <= 5; $i++)
                                     @if ($i <= $t->rating)
                                         <span class="text-yellow-400 text-2xl">&#9733;</span>
@@ -278,16 +284,19 @@
             <p class="mt-4 text-lg text-gray-400">Lihat proyek video 3D terbaik kami langsung dari YouTube.</p>
         </div>
 
-        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-8xl mx-auto">
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             @foreach ($video as $v)
                 <div class="relative bg-gray-900 rounded-2xl overflow-hidden shadow-lg transition duration-500 hover:shadow-2xl hover:scale-105 p-4"
                     data-aos="zoom-in" data-aos-delay="100">
-                    <div class="aspect-w-16 aspect-h-9">
-                        <iframe width="675" height="315" class="rounded-2xl" src="{{ $v->url_video }}"
+
+                    <!-- Membuat iframe responsif dengan aspect-video -->
+                    <div class="w-full aspect-video">
+                        <iframe class="w-full h-full rounded-2xl" src="{{ $v->url_video }}"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
+
                     <div class="p-4 text-center">
                         <h3 class="text-2xl font-semibold text-green-500">{{ $v->judul_video }}</h3>
                     </div>
@@ -300,10 +309,6 @@
     <footer class="bg-green-700 text-white py-10 px-6 md:px-12">
         <div
             class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-start text-center md:text-left gap-6">
-            <div class="md:w-1/3">
-                <h2 class="text-2xl font-extrabold">3D Video Store</h2>
-                <p class="mt-2 text-sm text-gray-200">Toko terbaik untuk koleksi video 3D berkualitas tinggi.</p>
-            </div>
 
             <!-- Navigation Links -->
             <div class="md:w-1/3">
@@ -315,6 +320,13 @@
                     <li><a href="{{ route('customer.index') }}" class="hover:underline">Testimonial</a></li>
                     <li><a href="{{ route('history-order.index') }}" class="hover:underline">Histori</a></li>
                 </ul>
+            </div>
+
+            <div class="md:w-1/3">
+                <h2 class="text-2xl font-extrabold">JUSTPLAY CORPORATE</h2>
+                <p class="mt-2 text-sm text-gray-200">Temukan video 3D berkualitas tinggi yang menggabungkan
+                    kreativitas dan teknologi untuk hiburan serta keunggulan bisnis Anda. JUSTPLAY CORPORATE Dari Kode
+                    ke Kreativitas, Dari Imajinasi ke Realitas!.</p>
             </div>
 
             <!-- Social Media -->
@@ -332,7 +344,7 @@
         </div>
 
         <div class="mt-6 text-center border-t border-gray-400 pt-4">
-            <p class="text-sm">&copy; 2024 3D Video Store. All rights reserved.</p>
+            <p class="text-sm">&copy; 2025 JUSTPLAY CORPORATE . ALL RIGHT RESERVXX</p>
         </div>
     </footer>
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\VideoYtController;
 use App\Http\Controllers\customer\OrderController;
 use App\Http\Controllers\admin\NomorRekeningController;
 use App\Http\Controllers\admin\DashboardAdminController;
+use App\Http\Controllers\admin\TestimoniController;
 use App\Http\Controllers\customer\LandingPageController;
 
 // Route::get('/', function () {
@@ -39,6 +40,8 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/pesanan/{id}/cetak-invoice', [PesananController::class, 'cetakInvoice'])->name('pesanan.invoice');
     Route::put('/pesanan/{id}/link-video', [PesananController::class, 'updateOrder'])->name('pesanan.link-video');
     Route::resource('video-yt', VideoYtController::class);
+    Route::get('/testimoni', [TestimoniController::class, 'index'])->name('testimoni.index');
+    Route::delete('/testimoni/{id}', [TestimoniController::class, 'destroy'])->name('testimoni.destroy');
 });
 
 Route::prefix('customer')->middleware(['auth', 'role:customer'])->group(function () {

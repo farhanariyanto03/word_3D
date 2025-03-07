@@ -16,7 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     {{-- @vite('resources/css/app.css')
     @vite('resources/js/app.js') --}}
-    <link rel="stylesheet" href="{{ asset('build/assets/app-CiPyLyTK.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/app-CacknrTH.css') }}">
     <title>WORLD 3D</title>
 </head>
 

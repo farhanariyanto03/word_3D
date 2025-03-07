@@ -1,7 +1,7 @@
 @extends('admin.layout')
 
 @section('content')
-    <div class="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-purple-600">
+    <div class="flex items-center justify-center min-h-screen">
         <div class="bg-white/10 backdrop-blur-lg border border-white/30 shadow-2xl rounded-2xl p-8 max-w-lg w-full">
             <h2 class="text-3xl font-bold text-black text-center mb-6">
                 {{ $edit_norek ? 'Edit Nomor Rekening' : 'Tambah Nomor Rekening' }}

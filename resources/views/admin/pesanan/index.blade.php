@@ -102,6 +102,10 @@
                                                 <i class="ri-close-fill text-xl"></i>
                                             </button>
                                         </form>
+                                        <a href="https://wa.me/+62{{ $o->user->no_hp }}"
+                                            class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition">
+                                            <i class="ri-whatsapp-line text-xl"></i>
+                                        </a>
                                     </div>
                                 </td>
                             </tr>

@@ -16,7 +16,7 @@
     </script>
     {{-- @vite('resources/css/app.css')
     @vite('resources/js/app.js') --}}
-    <link rel="stylesheet" href="{{ asset('build/assets/app-CiPyLyTK.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/app-CacknrTH.css') }}">
     <title>WORLD 3D</title>
 </head>
 
