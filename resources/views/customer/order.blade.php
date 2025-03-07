@@ -14,8 +14,9 @@
     <script>
         AOS.init();
     </script>
-    @vite('resources/css/app.css')
-    @vite('resources/js/app.js')
+    {{-- @vite('resources/css/app.css')
+    @vite('resources/js/app.js') --}}
+    <link rel="stylesheet" href="{{ asset('build/assets/app-DTXZRgrS.css') }}">
     <title>WORLD 3D</title>
 </head>
 
@@ -334,6 +335,7 @@
             }
         });
     </script>
+    <script src="{{ asset('build/assets/app-6ScYOSIw.js') }}"></script>
 </body>
 
 </html>

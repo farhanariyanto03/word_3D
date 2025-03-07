@@ -14,8 +14,9 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    @vite('resources/css/app.css')
-    @vite('resources/js/app.js')
+    {{-- @vite('resources/css/app.css')
+    @vite('resources/js/app.js') --}}
+    <link rel="stylesheet" href="{{ asset('build/assets/app-DTXZRgrS.css') }}">
     <title>WORLD 3D</title>
 </head>
 
@@ -335,6 +336,7 @@
     <script>
         AOS.init();
     </script>
+    <script src="{{ asset('build/assets/app-6ScYOSIw.js') }}"></script>
 </body>
 
 </html>
