@@ -8,11 +8,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;display=swap" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="{{ asset('assets/images/LOGO-HIJAU.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.css">
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
-    <link rel="stylesheet" href="{{ asset('build/assets/app-DTXZRgrS.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/app-CiPyLyTK.css') }}">
     <title>{{ $title }}</title>
 </head>
 
@@ -33,7 +34,7 @@
                         </svg>
                     </button>
                     <a href="https://flowbite.com" class="flex ms-2 md:me-24">
-                        <img src="{{ asset('assets/images/LOGO.png') }}" class="h-10 me-3" alt="FlowBite Logo" />
+                        <img src="{{ asset('assets/images/fj-jf-logo-letter-designs-2-3b8bf7313ef88e1ab5bee6199d6cDf70c0f36fc4fb70b6fb950e63b6b7c0ccbcf (1).png') }}" class="h-10 me-3" alt="FlowBite Logo" />
                     </a>
                 </div>
                 <div class="flex items-center">
@@ -107,6 +108,15 @@
                             {{ request()->routeIs('pesanan.index') ? 'bg-green-500 dark:bg-green-800 text-white' : 'text-gray-900' }}">
                         <i class="ri-shopping-cart-line text-3xl"></i>
                         <span class="ms-3 font-semibold">Pesanan Produk</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('video-yt.index') }}"
+                        class="flex items-center p-2 rounded-lg dark:text-white hover:bg-green-500 dark:hover:bg-green-200 group
+                            {{ request()->routeIs('video-yt.index') ? 'bg-green-500 dark:bg-green-800 text-white' : 'text-gray-900' }}">
+                        <i class="ri-file-video-line text-3xl"></i>
+                        <span class="ms-3 font-semibold">Vidio YT</span>
                     </a>
                 </li>
             </ul>

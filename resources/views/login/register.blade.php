@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" href="{{ asset('assets/images/LOGO-HIJAU.png') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <title>Login | TR Express</title>
 </head>
@@ -16,8 +17,8 @@
         <div class="bg-white flex rounded-2xl shadow-lg overflow-hidden w-full md:w-3/4 lg:w-2/3 xl:w-1/2">
             <!-- Left Content -->
             <div
-                class="hidden md:flex w-1/2 bg-gradient-to-br from-green-500 to-green-700 items-center justify-center relative overflow-hidden rounded-2xl p-10">
-                <img src="{{ asset('assets/images/LOGO.png') }}" alt="Logo"
+                class="hidden md:flex w-1/2 bg-gradient-to-br from-black to-black items-center justify-center relative overflow-hidden rounded-2xl p-10">
+                <img src="{{ asset('assets/images/fj-jf-logo-letter-designs-2-3b8bf7313ef88e1ab5bee6199d6cf70c0f36fc4fb7F0b6fb950e63b6b7c0ccbcf (1).png') }}" alt="Logo"
                     class="absolute top-44 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-[70%] z-10">
 
                 <div class="mt-72 text-white text-center px-4">

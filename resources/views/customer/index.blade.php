@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;display=swap" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
-    <link rel="icon" type="image/png" href="{{ asset('assets/images/LOGO.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('assets/images/LOGO-HIJAU.png') }}">
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -16,7 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     {{-- @vite('resources/css/app.css')
     @vite('resources/js/app.js') --}}
-    <link rel="stylesheet" href="{{ asset('build/assets/app-DTXZRgrS.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/app-CiPyLyTK.css') }}">
     <title>WORLD 3D</title>
 </head>
 
@@ -25,7 +25,7 @@
     <nav class="bg-white fixed top-0 left-0 w-full z-50 shadow-md">
         <div class="max-w-7xl mx-auto flex items-center justify-between h-20 px-6">
             <a href="{{ route('customer.index') }}">
-                <img src="{{ asset('assets/images/LOGO.png') }}" class="w-32" alt="">
+                <img src="{{ asset('assets/images/fj-jf-logo-letter-designs-2-3b8bf7313ef88e1ab5bee6199d6cDf70c0f36fc4fb70b6fb950e63b6b7c0ccbcf (1).png') }}" class="w-32" alt="">
             </a>
 
             <!-- Desktop Menu -->
@@ -34,21 +34,21 @@
                     class="nav-link active text-green-700 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-1 after:bg-green-700 after:transition-all after:duration-300 hover:after:w-full">
                     Home
                 </a>
-                <a href="#service"
+                <a href="#services"
                     class="nav-link text-green-700 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-1 after:bg-green-700 after:transition-all after:duration-300 hover:after:w-full">
                     Service
                 </a>
-                <a href="{{ route('customer.index') }}"
+                <a href="#products"
                     class="nav-link text-green-700 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-1 after:bg-green-700 after:transition-all after:duration-300 hover:after:w-full">
-                    Product
+                    Produk
                 </a>
-                <a href="{{ route('customer.index') }}"
+                <a href="#testimonials"
                     class="nav-link text-green-700 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-1 after:bg-green-700 after:transition-all after:duration-300 hover:after:w-full">
-                    Testimonial
+                    Testimoni
                 </a>
                 <a href="{{ route('history-order.index') }}"
                     class="nav-link text-green-700 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-1 after:bg-green-700 after:transition-all after:duration-300 hover:after:w-full">
-                    History
+                    Histori
                 </a>
             </div>
 
@@ -87,21 +87,21 @@
                 class="nav-link active text-green-400 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-1 after:bg-green-400 after:transition-all after:duration-300 hover:after:w-full">
                 Home
             </a>
-            <a href="#"
+            <a href="#services"
                 class="nav-link text-white font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-1 after:bg-green-400 after:transition-all after:duration-300 hover:after:w-full hover:text-green-400">
                 Service
             </a>
-            <a href="{{ route('customer.index') }}"
+            <a href="#products"
                 class="nav-link text-white font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-1 after:bg-green-400 after:transition-all after:duration-300 hover:after:w-full hover:text-green-400">
-                Product
+                Produk
             </a>
-            <a href="{{ route('customer.index') }}"
+            <a href="#testimonials"
                 class="nav-link text-white font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-1 after:bg-green-400 after:transition-all after:duration-300 hover:after:w-full hover:text-green-400">
-                Testimonial
+                Testimoni
             </a>
             <a href="{{ route('history-order.index') }}"
                 class="nav-link text-white font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-1 after:bg-green-400 after:transition-all after:duration-300 hover:after:w-full hover:text-green-400">
-                History
+                Histori
             </a>
             @guest
                 <a href="{{ route('login') }}"
@@ -119,22 +119,22 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="service"
+    <section
         class="relative w-full h-screen bg-fixed bg-center bg-cover bg-no-repeat text-white flex items-center justify-center"
-        style="background-image: url('{{ asset('assets/images/Driver.00_01_10_14.Still003.png') }}');">
-        <div class="absolute inset-0 bg-black opacity-80"></div> <!-- Overlay -->
+        style="background-image: url('{{ asset('assets/images/WhatsApp Image 2025-03-07 at 20.52.40_9e60d548.jpg') }}');">
+        <div class="absolute inset-0 bg-black/70"></div> <!-- Overlay -->
         <div class="relative text-center px-6 md:px-12 max-w-4xl">
             <h1 data-aos="fade-up" data-aos-duration="1000"
                 class="text-5xl md:text-7xl font-extrabold text-green-500 drop-shadow-lg">
-                Revolutionize Your 3D Experience
+                Revolusi Pengalaman 3D Anda Lebih Hidup, Lebih Realistis, Lebih Imersif!
             </h1>
             <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000"
                 class="mt-6 text-lg md:text-2xl text-gray-300 font-light">
-                Discover high-quality, immersive 3D videos crafted for entertainment and business excellence.
+                Temukan video 3D berkualitas tinggi dan imersif yang dibuat untuk hiburan dan keunggulan bisnis.
             </p>
             <div data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000"
                 class="mt-8 flex justify-center space-x-4">
-                <a href="#"
+                <a href="#products"
                     class="border-2 border-green-700 text-green-700 px-6 py-3 rounded-full text-lg font-semibold hover:bg-green-700 hover:text-white transition duration-300 flex items-center space-x-2">
                     <i class="ri-shopping-cart-2-line"></i>
                     <span>Order</span>
@@ -144,13 +144,13 @@
     </section>
 
     <!-- Features Section -->
-    <section class="bg-white py-16 px-6 md:px-12 text-white">
+    <section class="bg-white py-16 px-6 md:px-12 text-white" id="services">
         <div class="max-w-6xl mx-auto text-center">
             <h2 class="text-4xl md:text-5xl font-extrabold text-green-500 drop-shadow-lg" data-aos="fade-up">
-                Why Choose Our 3D Videos?
+                Mengapa Memilih Video 3D Kami?
             </h2>
             <p class="mt-4 text-lg text-gray-600" data-aos="fade-up" data-aos-delay="200">
-                We offer high-quality, immersive 3D experiences that redefine visual storytelling.
+                Kami menawarkan pengalaman 3D yang mendalam dan berkualitas tinggi yang mendefinisikan ulang penceritaan visual.
             </p>
         </div>
 
@@ -162,8 +162,8 @@
                     class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-white text-green-700 w-16 h-16 flex items-center justify-center rounded-full shadow-md transition duration-300 hover:rotate-12">
                     <i class="ri-film-line text-3xl"></i>
                 </div>
-                <h3 class="text-2xl font-semibold mt-12">Ultra HD Quality</h3>
-                <p class="mt-4 text-lg text-gray-100">Enjoy crystal-clear 3D videos with stunning resolution.</p>
+                <h3 class="text-2xl font-semibold mt-12">Kualitas Ultra HD</h3>
+                <p class="mt-4 text-lg text-gray-100">Nikmati video 3D sebening kristal dengan resolusi menakjubkan.</p>
             </div>
 
             <!-- Card 2 -->
@@ -173,8 +173,8 @@
                     class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-white text-green-700 w-16 h-16 flex items-center justify-center rounded-full shadow-md transition duration-300 hover:rotate-12">
                     <i class="ri-goggles-line text-3xl"></i>
                 </div>
-                <h3 class="text-2xl font-semibold mt-12">Immersive Experience</h3>
-                <p class="mt-4 text-lg text-gray-100">Get lost in the world of 3D with our immersive content.</p>
+                <h3 class="text-2xl font-semibold mt-12">Pengalaman Imersif</h3>
+                <p class="mt-4 text-lg text-gray-100">Rasakan Pengalaman Imersif Jelajahi Dunia 3D yang Memukau dengan Konten Kami!</p>
             </div>
 
             <!-- Card 3 -->
@@ -184,18 +184,17 @@
                     class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-white text-green-700 w-16 h-16 flex items-center justify-center rounded-full shadow-md transition duration-300 hover:rotate-12">
                     <i class="ri-customer-service-2-line text-3xl"></i>
                 </div>
-                <h3 class="text-2xl font-semibold mt-12">24/7 Support</h3>
-                <p class="mt-4 text-lg text-gray-100">We’re here to help you anytime, anywhere.</p>
+                <h3 class="text-2xl font-semibold mt-12">Dukungan 24/7</h3>
+                <p class="mt-4 text-lg text-gray-100">Kami siap membantu Anda kapan saja dan di mana saja.</p>
             </div>
         </div>
     </section>
 
     <!-- Products Section -->
-    <section class="bg-black text-white py-16 px-6 md:px-12">
+    <section class="bg-black text-white py-16 px-6 md:px-12" id="products">
         <div class="max-w-6xl mx-auto text-center" data-aos="fade-up">
-            <h2 class="text-4xl font-extrabold text-green-500">Exclusive 3D Video Collection</h2>
-            <p class="mt-4 text-lg text-gray-400">Explore our high-quality 3D videos crafted for entertainment &
-                business.</p>
+            <h2 class="text-4xl font-extrabold text-green-500">Koleksi Video 3D Eksklusif</h2>
+            <p class="mt-4 text-lg text-gray-400">Jelajahi video 3D berkualitas tinggi kami yang dibuat untuk hiburan & bisnis.</p>
         </div>
 
         <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -219,7 +218,7 @@
                         @endauth
                         <a href="{{ route('order.show-all', Crypt::encryptString($p->id)) }}"
                             class="mt-8 flex items-center justify-center text-blue-400">
-                            Show All Order <i class="ri-arrow-right-line ml-2"></i>
+                            Lihat Semua Order <i class="ri-arrow-right-line ml-2"></i>
                         </a>
                     </div>
                 </div>
@@ -228,10 +227,10 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="bg-gradient-to-b from-green-50 to-white py-16 px-6 md:px-12">
+    <section class="bg-gradient-to-b from-green-50 to-white py-16 px-6 md:px-12" id="testimonials">
         <div class="max-w-6xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-extrabold text-green-600">What Our Customers Say</h2>
-            <p class="mt-4 text-lg text-gray-600">Real feedback from our satisfied clients.</p>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-green-600">Apa Kata Pelanggan Kami</h2>
+            <p class="mt-4 text-lg text-gray-600">Umpan balik nyata dari klien kami yang puas.</p>
         </div>
 
         <!-- Swiper Container -->
@@ -272,6 +271,31 @@
         </div>
     </section>
 
+    <!-- VideoY T Section -->
+    <section class="bg-black text-white py-16 px-6 md:px-12" id="portfolio">
+        <div class="max-w-6xl mx-auto text-center" data-aos="fade-up">
+            <h2 class="text-4xl font-extrabold text-green-500">Portofolio Video 3D Kami</h2>
+            <p class="mt-4 text-lg text-gray-400">Lihat proyek video 3D terbaik kami langsung dari YouTube.</p>
+        </div>
+
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-8xl mx-auto">
+            @foreach ($video as $v)
+                <div class="relative bg-gray-900 rounded-2xl overflow-hidden shadow-lg transition duration-500 hover:shadow-2xl hover:scale-105 p-4"
+                    data-aos="zoom-in" data-aos-delay="100">
+                    <div class="aspect-w-16 aspect-h-9">
+                        <iframe width="675" height="315" class="rounded-2xl" src="{{ $v->url_video }}"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="text-2xl font-semibold text-green-500">{{ $v->judul_video }}</h3>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </section>
+
     <!-- Footer Section -->
     <footer class="bg-green-700 text-white py-10 px-6 md:px-12">
         <div
@@ -285,10 +309,11 @@
             <div class="md:w-1/3">
                 <h3 class="text-lg font-extrabold">Navigasi</h3>
                 <ul class="mt-2 space-y-2">
-                    <li><a href="#" class="hover:underline">Beranda</a></li>
-                    <li><a href="#" class="hover:underline">Koleksi</a></li>
-                    <li><a href="#" class="hover:underline">Tentang Kami</a></li>
-                    <li><a href="#" class="hover:underline">Kontak</a></li>
+                    <li><a href="{{ route('customer.index') }}" class="hover:underline">Home</a></li>
+                    <li><a href="{{ route('customer.index') }}" class="hover:underline">Service</a></li>
+                    <li><a href="{{ route('customer.index') }}" class="hover:underline">Produk</a></li>
+                    <li><a href="{{ route('customer.index') }}" class="hover:underline">Testimonial</a></li>
+                    <li><a href="{{ route('history-order.index') }}" class="hover:underline">Histori</a></li>
                 </ul>
             </div>
 
@@ -296,14 +321,12 @@
             <div class="md:w-1/3">
                 <h3 class="text-lg font-extrabold">Ikuti Kami</h3>
                 <div class="flex justify-center md:justify-start space-x-4 mt-3">
-                    <a href="#" class="text-gray-200 hover:text-white"><i
+                    <a href="https://www.facebook.com/arvann06" class="text-gray-200 hover:text-white"><i
                             class="fab fa-facebook text-2xl"></i></a>
-                    <a href="#" class="text-gray-200 hover:text-white"><i
-                            class="fab fa-twitter text-2xl"></i></a>
-                    <a href="#" class="text-gray-200 hover:text-white"><i
-                            class="fab fa-instagram text-2xl"></i></a>
-                    <a href="#" class="text-gray-200 hover:text-white"><i
-                            class="fab fa-youtube text-2xl"></i></a>
+                    <a href="https://www.instagram.com/arvannn06/" class="text-gray-200 hover:text-white">
+                        <i class="fab fa-instagram text-2xl"></i></a>
+                    <a href="https://wa.me/6282298961719" class="text-gray-200 hover:text-white"><i
+                            class="fab fa-whatsapp text-2xl"></i></a>
                 </div>
             </div>
         </div>
@@ -333,6 +356,7 @@
             });
         });
     </script>
+
     <script>
         AOS.init();
     </script>

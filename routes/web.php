@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\admin\VidioController;
 use App\Http\Controllers\admin\PesananController;
+use App\Http\Controllers\admin\VideoYtController;
 use App\Http\Controllers\customer\OrderController;
 use App\Http\Controllers\admin\NomorRekeningController;
 use App\Http\Controllers\admin\DashboardAdminController;
@@ -37,6 +38,7 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::put('/pesanan/{id}/selesai', [PesananController::class, 'updateSelesai'])->name('pesanan.selesai');
     Route::get('/pesanan/{id}/cetak-invoice', [PesananController::class, 'cetakInvoice'])->name('pesanan.invoice');
     Route::put('/pesanan/{id}/link-video', [PesananController::class, 'updateOrder'])->name('pesanan.link-video');
+    Route::resource('video-yt', VideoYtController::class);
 });
 
 Route::prefix('customer')->middleware(['auth', 'role:customer'])->group(function () {

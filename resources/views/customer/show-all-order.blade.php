@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;display=swap" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
-    <link rel="icon" type="image/png" href="{{ asset('assets/images/LOGO.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('assets/images/LOGO-HIJAU.png') }}">
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -16,7 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     {{-- @vite('resources/css/app.css')
     @vite('resources/js/app.js') --}}
-    <link rel="stylesheet" href="{{ asset('build/assets/app-DTXZRgrS.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/app-CiPyLyTK.css') }}">
     <title>WORLD 3D</title>
 </head>
 
@@ -25,7 +25,7 @@
     <nav class="bg-white fixed top-0 left-0 w-full z-50 shadow-md">
         <div class="max-w-7xl mx-auto flex items-center justify-between h-20 px-6">
             <a href="{{ route('customer.index') }}">
-                <img src="{{ asset('assets/images/LOGO.png') }}" class="w-32" alt="">
+                <img src="{{ asset('assets/images/fj-jf-logo-letter-designs-2-3b8bf7313ef88e1ab5bee6199d6cDf70c0f36fc4fb70b6fb950e63b6b7c0ccbcf (1).png') }}" class="w-32" alt="">
             </a>
 
             <!-- Desktop Menu -->
@@ -34,21 +34,21 @@
                     class="nav-link active text-green-700 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-1 after:bg-green-700 after:transition-all after:duration-300 hover:after:w-full">
                     Home
                 </a>
-                <a href="#service"
+                <a href="#services"
                     class="nav-link text-green-700 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-1 after:bg-green-700 after:transition-all after:duration-300 hover:after:w-full">
                     Service
                 </a>
-                <a href="{{ route('customer.index') }}"
+                <a href="#products"
                     class="nav-link text-green-700 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-1 after:bg-green-700 after:transition-all after:duration-300 hover:after:w-full">
-                    Product
+                    Produk
                 </a>
-                <a href="{{ route('customer.index') }}"
+                <a href="#testimonials"
                     class="nav-link text-green-700 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-1 after:bg-green-700 after:transition-all after:duration-300 hover:after:w-full">
-                    Testimonial
+                    Testimoni
                 </a>
                 <a href="{{ route('history-order.index') }}"
                     class="nav-link text-green-700 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-1 after:bg-green-700 after:transition-all after:duration-300 hover:after:w-full">
-                    History
+                    Histori
                 </a>
             </div>
 
@@ -87,21 +87,21 @@
                 class="nav-link active text-green-400 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-1 after:bg-green-400 after:transition-all after:duration-300 hover:after:w-full">
                 Home
             </a>
-            <a href="#"
+            <a href="#services"
                 class="nav-link text-white font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-1 after:bg-green-400 after:transition-all after:duration-300 hover:after:w-full hover:text-green-400">
                 Service
             </a>
-            <a href="{{ route('customer.index') }}"
+            <a href="#products"
                 class="nav-link text-white font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-1 after:bg-green-400 after:transition-all after:duration-300 hover:after:w-full hover:text-green-400">
-                Product
+                Produk
             </a>
-            <a href="{{ route('customer.index') }}"
+            <a href="#testimonials"
                 class="nav-link text-white font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-1 after:bg-green-400 after:transition-all after:duration-300 hover:after:w-full hover:text-green-400">
-                Testimonial
+                Testimoni
             </a>
             <a href="{{ route('history-order.index') }}"
                 class="nav-link text-white font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-1 after:bg-green-400 after:transition-all after:duration-300 hover:after:w-full hover:text-green-400">
-                History
+                Histori
             </a>
             @guest
                 <a href="{{ route('login') }}"
@@ -125,6 +125,7 @@
             <table class="w-full border-collapse border border-gray-300 text-center">
                 <thead>
                     <tr class="bg-green-600">
+                        <th class="border p-2 text-white">No</th>
                         <th class="border p-2 text-white">Nama Customer</th>
                         <th class="border p-2 text-white">ID Order</th>
                         <th class="border p-2 text-white">Progress</th>
@@ -133,6 +134,7 @@
                 <tbody>
                     @foreach ($orders as $order)
                         <tr class="border">
+                            <td class="border p-2">{{ $loop->iteration }}</td>
                             <td class="border p-2">{{ $order->user->nama }}</td>
                             <td class="border p-2">INV{{ str_repeat('*', 5) . substr($order->id, -2) }}</td>
                             <td class="border p-2">
@@ -158,33 +160,38 @@
                 <h2 class="text-2xl font-extrabold">3D Video Store</h2>
                 <p class="mt-2 text-sm text-gray-200">Toko terbaik untuk koleksi video 3D berkualitas tinggi.</p>
             </div>
+
+            <!-- Navigation Links -->
             <div class="md:w-1/3">
                 <h3 class="text-lg font-extrabold">Navigasi</h3>
                 <ul class="mt-2 space-y-2">
-                    <li><a href="#" class="hover:underline">Beranda</a></li>
-                    <li><a href="#" class="hover:underline">Koleksi</a></li>
-                    <li><a href="#" class="hover:underline">Tentang Kami</a></li>
-                    <li><a href="#" class="hover:underline">Kontak</a></li>
+                    <li><a href="{{ route('customer.index') }}" class="hover:underline">Home</a></li>
+                    <li><a href="{{ route('customer.index') }}" class="hover:underline">Service</a></li>
+                    <li><a href="{{ route('customer.index') }}" class="hover:underline">Produk</a></li>
+                    <li><a href="{{ route('customer.index') }}" class="hover:underline">Testimonial</a></li>
+                    <li><a href="{{ route('history-order.index') }}" class="hover:underline">Histori</a></li>
                 </ul>
             </div>
+
+            <!-- Social Media -->
             <div class="md:w-1/3">
                 <h3 class="text-lg font-extrabold">Ikuti Kami</h3>
                 <div class="flex justify-center md:justify-start space-x-4 mt-3">
-                    <a href="#" class="text-gray-200 hover:text-white"><i
+                    <a href="https://www.facebook.com/arvann06" class="text-gray-200 hover:text-white"><i
                             class="fab fa-facebook text-2xl"></i></a>
-                    <a href="#" class="text-gray-200 hover:text-white"><i
-                            class="fab fa-twitter text-2xl"></i></a>
-                    <a href="#" class="text-gray-200 hover:text-white"><i
-                            class="fab fa-instagram text-2xl"></i></a>
-                    <a href="#" class="text-gray-200 hover:text-white"><i
-                            class="fab fa-youtube text-2xl"></i></a>
+                    <a href="https://www.instagram.com/arvannn06/" class="text-gray-200 hover:text-white">
+                        <i class="fab fa-instagram text-2xl"></i></a>
+                    <a href="https://wa.me/6282298961719" class="text-gray-200 hover:text-white"><i
+                            class="fab fa-whatsapp text-2xl"></i></a>
                 </div>
             </div>
         </div>
+
         <div class="mt-6 text-center border-t border-gray-400 pt-4">
             <p class="text-sm">&copy; 2024 3D Video Store. All rights reserved.</p>
         </div>
     </footer>
+
     <script src="{{ asset('build/assets/app-6ScYOSIw.js') }}"></script>
 </body>
 

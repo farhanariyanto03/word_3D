@@ -76,7 +76,7 @@ class LoginController extends Controller
             'role' => $validatedData['role'],
         ]);
 
-        return redirect()->route('login.index')->with('success', 'Register berhasil, silakan login');
+        return redirect()->route('login')->with('success', 'Register berhasil, silakan login');
     }
 
 

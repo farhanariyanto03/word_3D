@@ -10,6 +10,7 @@ use App\Models\NomorRekening;
 use App\Mail\OrderNotificationMail;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use App\Models\VideoYt;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Crypt;
@@ -20,7 +21,8 @@ class LandingPageController extends Controller
     {
         return view('customer.index', [
             'produk' => ProdukVideo::all(),
-            'testimoni' => Testimoni::all()
+            'testimoni' => Testimoni::all(),
+            'video' => VideoYt::all()
         ]);
     }
 
