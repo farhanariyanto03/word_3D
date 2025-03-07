@@ -11,8 +11,9 @@
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.css">
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <title>Document</title>
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+    <link rel="stylesheet" href="{{ asset('build/assets/app-DTXZRgrS.css') }}">
+    <title>{{ $title }}</title>
 </head>
 
 <body>
@@ -131,6 +132,7 @@
             info: false,
         });
     </script>
+    <script src="{{ asset('build/assets/app-6ScYOSIw.js') }}"></script>
 </body>
 
 </html>
