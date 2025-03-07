@@ -37,15 +37,15 @@
                     class="nav-link text-green-700 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-1 after:bg-green-700 after:transition-all after:duration-300 hover:after:w-full">
                     Service
                 </a>
-                <a href="#"
+                <a href="{{ route('customer.index') }}"
                     class="nav-link text-green-700 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-1 after:bg-green-700 after:transition-all after:duration-300 hover:after:w-full">
                     Product
                 </a>
-                <a href="#"
+                <a href="{{ route('customer.index') }}"
                     class="nav-link text-green-700 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-1 after:bg-green-700 after:transition-all after:duration-300 hover:after:w-full">
                     Testimonial
                 </a>
-                <a href="#"
+                <a href="{{ route('history-order.index') }}"
                     class="nav-link text-green-700 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-1 after:bg-green-700 after:transition-all after:duration-300 hover:after:w-full">
                     History
                 </a>
@@ -54,7 +54,7 @@
             <!-- Button -->
             @guest
                 <div class="hidden md:block">
-                    <a href="{{ route('login.index') }}"
+                    <a href="{{ route('login') }}"
                         class="border-2 border-green-700 text-green-700 px-5 py-2 rounded-full text-lg font-semibold hover:bg-green-700 hover:text-white transition duration-300 flex items-center space-x-2">
                         Login
                     </a>
@@ -82,7 +82,7 @@
         <div id="mobile-menu"
             class="hidden fixed inset-0 bg-black bg-opacity-90 backdrop-blur-lg flex flex-col items-center justify-center space-y-6 text-white text-lg transition-all duration-600">
             <button id="close-menu" class="absolute top-6 right-6 text-white text-3xl">&times;</button>
-            <a href="#"
+            <a href="{{ route('customer.index') }}"
                 class="nav-link active text-green-400 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-1 after:bg-green-400 after:transition-all after:duration-300 hover:after:w-full">
                 Home
             </a>
@@ -90,26 +90,26 @@
                 class="nav-link text-white font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-1 after:bg-green-400 after:transition-all after:duration-300 hover:after:w-full hover:text-green-400">
                 Service
             </a>
-            <a href="#"
+            <a href="{{ route('customer.index') }}"
                 class="nav-link text-white font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-1 after:bg-green-400 after:transition-all after:duration-300 hover:after:w-full hover:text-green-400">
                 Product
             </a>
-            <a href="#"
+            <a href="{{ route('customer.index') }}"
                 class="nav-link text-white font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-1 after:bg-green-400 after:transition-all after:duration-300 hover:after:w-full hover:text-green-400">
                 Testimonial
             </a>
-            <a href="#"
+            <a href="{{ route('history-order.index') }}"
                 class="nav-link text-white font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-1 after:bg-green-400 after:transition-all after:duration-300 hover:after:w-full hover:text-green-400">
                 History
             </a>
             @guest
-                <a href="{{ route('login.index') }}"
+                <a href="{{ route('login') }}"
                     class="border-2 border-green-700 text-green-700 px-6 py-3 rounded-full text-lg font-semibold hover:bg-green-700 hover:text-white transition duration-300 flex items-center space-x-2">
                     Login
                 </a>
             @endguest
             @auth
-                <a href="{{ route('login.index') }}"
+                <a href="{{ route('login') }}"
                     class="border-2 border-red-700 text-red-700 px-6 py-3 rounded-full text-lg font-semibold hover:bg-red-700 hover:text-white transition duration-300 flex items-center space-x-2">
                     Logout
                 </a>

@@ -27,19 +27,34 @@
                 <img src="{{ asset('assets/images/LOGO.png') }}" class="w-32" alt="">
             </a>
 
-            <!-- Menu (Hidden di Mobile) -->
+            <!-- Desktop Menu -->
             <div class="hidden md:flex space-x-5">
-                <a href="#" class="nav-link active text-green-700 font-semibold">Home</a>
-                <a href="#" class="nav-link text-green-700 font-semibold">Service</a>
-                <a href="#" class="nav-link text-green-700 font-semibold">Product</a>
-                <a href="#" class="nav-link text-green-700 font-semibold">Testimonial</a>
-                <a href="#" class="nav-link text-green-700 font-semibold">History</a>
+                <a href="{{ route('customer.index') }}"
+                    class="nav-link active text-green-700 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-1 after:bg-green-700 after:transition-all after:duration-300 hover:after:w-full">
+                    Home
+                </a>
+                <a href="#service"
+                    class="nav-link text-green-700 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-1 after:bg-green-700 after:transition-all after:duration-300 hover:after:w-full">
+                    Service
+                </a>
+                <a href="{{ route('customer.index') }}"
+                    class="nav-link text-green-700 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-1 after:bg-green-700 after:transition-all after:duration-300 hover:after:w-full">
+                    Product
+                </a>
+                <a href="{{ route('customer.index') }}"
+                    class="nav-link text-green-700 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-1 after:bg-green-700 after:transition-all after:duration-300 hover:after:w-full">
+                    Testimonial
+                </a>
+                <a href="{{ route('history-order.index') }}"
+                    class="nav-link text-green-700 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-1 after:bg-green-700 after:transition-all after:duration-300 hover:after:w-full">
+                    History
+                </a>
             </div>
 
             <!-- Button -->
             @guest
                 <div class="hidden md:block">
-                    <a href="{{ route('login.index') }}"
+                    <a href="{{ route('login') }}"
                         class="border-2 border-green-700 text-green-700 px-5 py-2 rounded-full text-lg font-semibold hover:bg-green-700 hover:text-white transition duration-300 flex items-center space-x-2">
                         Login
                     </a>
@@ -67,19 +82,34 @@
         <div id="mobile-menu"
             class="hidden fixed inset-0 bg-black bg-opacity-90 backdrop-blur-lg flex flex-col items-center justify-center space-y-6 text-white text-lg transition-all duration-600">
             <button id="close-menu" class="absolute top-6 right-6 text-white text-3xl">&times;</button>
-            <a href="#" class="nav-link active hover:text-green-700">Home</a>
-            <a href="#" class="nav-link hover:text-green-700">Service</a>
-            <a href="#" class="nav-link hover:text-green-700">Product</a>
-            <a href="#" class="nav-link hover:text-green-700">Testimonial</a>
-            <a href="#" class="nav-link hover:text-green-700">History</a>
+            <a href="{{ route('customer.index') }}"
+                class="nav-link active text-green-400 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-1 after:bg-green-400 after:transition-all after:duration-300 hover:after:w-full">
+                Home
+            </a>
+            <a href="#"
+                class="nav-link text-white font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-1 after:bg-green-400 after:transition-all after:duration-300 hover:after:w-full hover:text-green-400">
+                Service
+            </a>
+            <a href="{{ route('customer.index') }}"
+                class="nav-link text-white font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-1 after:bg-green-400 after:transition-all after:duration-300 hover:after:w-full hover:text-green-400">
+                Product
+            </a>
+            <a href="{{ route('customer.index') }}"
+                class="nav-link text-white font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-1 after:bg-green-400 after:transition-all after:duration-300 hover:after:w-full hover:text-green-400">
+                Testimonial
+            </a>
+            <a href="{{ route('history-order.index') }}"
+                class="nav-link text-white font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-1 after:bg-green-400 after:transition-all after:duration-300 hover:after:w-full hover:text-green-400">
+                History
+            </a>
             @guest
-                <a href="{{ route('login.index') }}"
+                <a href="{{ route('login') }}"
                     class="border-2 border-green-700 text-green-700 px-6 py-3 rounded-full text-lg font-semibold hover:bg-green-700 hover:text-white transition duration-300 flex items-center space-x-2">
                     Login
                 </a>
             @endguest
             @auth
-                <a href="{{ route('login.index') }}"
+                <a href="{{ route('login') }}"
                     class="border-2 border-red-700 text-red-700 px-6 py-3 rounded-full text-lg font-semibold hover:bg-red-700 hover:text-white transition duration-300 flex items-center space-x-2">
                     Logout
                 </a>
@@ -191,7 +221,8 @@
             class="hidden fixed inset-0 bg-black/70 flex justify-center items-center">
             <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
                 <h3 class="text-lg font-semibold text-gray-800 mb-4">Upload Bukti Transfer Pelunasan : </h3>
-                <form action="{{ route('pelunasan.update', ['id' => Crypt::encryptString($o->id)]) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('pelunasan.update', ['id' => Crypt::encryptString($o->id)]) }}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <label for="bayar">Sisa yang harus dibayar</label>

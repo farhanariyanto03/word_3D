@@ -21,9 +21,9 @@
                     class="absolute top-44 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-[70%] z-10">
 
                 <div class="mt-72 text-white text-center px-4">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil ex saepe dolore, impedit dicta
-                    molestiae temporibus doloremque eveniet, libero sunt debitis odit ullam suscipit ut! Obcaecati
-                    molestiae dignissimos ex soluta?
+                    Kami menyediakan layanan pembuatan dan penjualan video 3D berkualitas tinggi untuk berbagai
+                    keperluan, seperti promosi, animasi karakter, presentasi bisnis, dan konten media sosial. Dengan
+                    teknologi canggih, kami menghasilkan video yang realistis dan menarik sesuai kebutuhan pelanggan.
                 </div>
             </div>
 
@@ -86,7 +86,8 @@
                 </form>
                 <p class="mt-4 text-sm text-gray-600">
                     Silahkan login jika sudah punya akun
-                    <a href="{{ route('login.index') }}" class="text-green-500 font-medium hover:underline">Login sekarang</a>
+                    <a href="{{ route('login') }}" class="text-green-500 font-medium hover:underline">Login
+                        sekarang</a>
                 </p>
             </div>
         </div>

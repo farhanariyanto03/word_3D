@@ -11,7 +11,8 @@
 </head>
 
 <body>
-    <section class="bg-gradient-to-r from-green-600 via-green-500 to-green-500 min-h-screen flex items-center justify-center">
+    <section
+        class="bg-gradient-to-r from-green-600 via-green-500 to-green-500 min-h-screen flex items-center justify-center">
         <div class="bg-white flex rounded-2xl shadow-lg overflow-hidden w-full md:w-3/4 lg:w-2/3 xl:w-1/2">
             <!-- Left Content -->
             <div class="w-full md:w-1/2 p-8 md:p-12">
@@ -60,7 +61,8 @@
                 </form>
                 <p class="mt-4 text-sm text-gray-600">
                     Belum punya akun?
-                    <a href="{{ route('login.register') }}" class="text-green-500 font-medium hover:underline">Daftar sekarang</a>
+                    <a href="{{ route('login.register') }}" class="text-green-500 font-medium hover:underline">Daftar
+                        sekarang</a>
                 </p>
             </div>
 
@@ -71,7 +73,9 @@
                     class="absolute top-44 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-[70%] z-10">
 
                 <div class="mt-72 text-white text-center px-4">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil ex saepe dolore, impedit dicta molestiae temporibus doloremque eveniet, libero sunt debitis odit ullam suscipit ut! Obcaecati molestiae dignissimos ex soluta?
+                    Kami menyediakan layanan pembuatan dan penjualan video 3D berkualitas tinggi untuk berbagai
+                    keperluan, seperti promosi, animasi karakter, presentasi bisnis, dan konten media sosial. Dengan
+                    teknologi canggih, kami menghasilkan video yang realistis dan menarik sesuai kebutuhan pelanggan.
                 </div>
             </div>
         </div>

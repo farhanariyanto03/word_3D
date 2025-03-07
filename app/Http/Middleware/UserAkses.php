@@ -16,9 +16,14 @@ class UserAkses
     public function handle(Request $request, Closure $next, string $role): Response
     {
         if ($request->user()->role !== $role) {
-            abort(403);
+            return response()->json(['message' => 'Dilarang mengakses halaman ini silahkan login terlebih dahulu!!!'], 403);
         }
 
         return $next($request);
+    }
+
+    public function redirectTo()
+    {
+        return route('login');
     }
 }

@@ -13,13 +13,18 @@ use App\Http\Controllers\customer\LandingPageController;
 //     return view('welcome');
 // });
 
-Route::get('/login', [LoginController::class, 'index'])->name('login.index');
-Route::post('/ceklogin', [LoginController::class, 'ceklogin'])->name('login.ceklogin');
-Route::get('/register', [LoginController::class, 'register'])->name('login.register');
-Route::post('/register', [LoginController::class, 'registerStore'])->name('register.store');
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [LoginController::class, 'index'])->name('login');
+    Route::post('/ceklogin', [LoginController::class, 'ceklogin'])->name('login.ceklogin');
+    Route::get('/register', [LoginController::class, 'register'])->name('login.register');
+    Route::post('/register', [LoginController::class, 'registerStore'])->name('register.store');
+});
 
-Route::prefix('admin')->group(function () {
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/', [LandingPageController::class, 'index'])->name('customer.index');
+Route::get('/order/{id}/show-all', [LandingPageController::class, 'showAllOrder'])->name('order.show-all');
+
+Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/', function () {
         return view('admin.layout');
     });
@@ -34,12 +39,10 @@ Route::prefix('admin')->group(function () {
     Route::put('/pesanan/{id}/link-video', [PesananController::class, 'updateOrder'])->name('pesanan.link-video');
 });
 
-Route::prefix('customer')->group(function () {
-    Route::get('/', [LandingPageController::class, 'index'])->name('customer.index');
+Route::prefix('customer')->middleware(['auth', 'role:customer'])->group(function () {
     Route::get('/order/{id}', [LandingPageController::class, 'order'])->name('order.index');
     Route::post('/order/{id}', [LandingPageController::class, 'orderStore'])->name('order.store');
     Route::get('/history-order', [LandingPageController::class, 'historyOrder'])->name('history-order.index');
     Route::post('/testimonial', [LandingPageController::class, 'testimonialStore'])->name('testimonial.store');
     Route::put('/pelunasan/{id}', [LandingPageController::class, 'pelunasan'])->name('pelunasan.update');
-    Route::get('/order/{id}/show-all', [LandingPageController::class, 'showAllOrder'])->name('order.show-all');
 });

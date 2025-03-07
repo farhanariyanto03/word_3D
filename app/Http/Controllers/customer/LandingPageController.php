@@ -92,6 +92,9 @@ class LandingPageController extends Controller
     public function historyOrder()
     {
         $user = Auth::user();
+        if (!$user) {
+            return redirect()->route('login');
+        }
 
         return view('customer.history-order', [
             'order' => Order::where('user_id', $user->id)->get(),

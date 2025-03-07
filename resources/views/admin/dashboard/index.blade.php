@@ -7,7 +7,7 @@
         <i class="ri-box-3-line text-blue-500 text-4xl"></i>
         <div>
             <h2 class="text-lg font-semibold text-gray-700">Total Produk</h2>
-            <p class="text-2xl font-bold text-gray-900">100</p>
+            <p class="text-2xl font-bold text-gray-900">{{ $total_produk }}</p>
         </div>
     </div>
 
@@ -16,7 +16,7 @@
         <i class="ri-shopping-cart-2-line text-yellow-500 text-4xl"></i>
         <div>
             <h2 class="text-lg font-semibold text-gray-700">Pesanan Masuk</h2>
-            <p class="text-2xl font-bold text-gray-900">25</p>
+            <p class="text-2xl font-bold text-gray-900">{{ $pesanan_masuk }}</p>
         </div>
     </div>
 
@@ -25,7 +25,7 @@
         <i class="ri-check-line text-green-500 text-4xl"></i>
         <div>
             <h2 class="text-lg font-semibold text-gray-700">Pesanan Selesai</h2>
-            <p class="text-2xl font-bold text-gray-900">80</p>
+            <p class="text-2xl font-bold text-gray-900">{{ $pesanan_selesai }}</p>
         </div>
     </div>
 </div>
