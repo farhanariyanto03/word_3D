@@ -18,8 +18,9 @@
             <!-- Left Content -->
             <div
                 class="hidden md:flex w-1/2 bg-gradient-to-br from-black to-black items-center justify-center relative overflow-hidden rounded-2xl p-10">
-                <img src="{{ asset('assets/images/fj-jf-logo-letter-designs-2-3b8bf7313ef88e1ab5bee6199d6cf70c0f36fc4fb7F0b6fb950e63b6b7c0ccbcf (1).png') }}" alt="Logo"
-                    class="absolute top-44 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-[70%] z-10">
+                <img src="{{ asset('assets/images/fj-jf-logo-letter-designs-2-3b8bf7313ef88e1ab5bee6199d6cf70c0f36fc4fb7F0b6fb950e63b6b7c0ccbcf (1).png') }}"
+                    alt="Logo"
+                    class="absolute top-92 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-[70%] z-10">
 
                 <div class="mt-72 text-white text-center px-4">
                     Kami menyediakan layanan pembuatan dan penjualan video 3D berkualitas tinggi untuk berbagai
@@ -49,7 +50,8 @@
                     </div>
                 @endif
 
-                <form action="{{ route('register.store') }}" method="POST" class="flex flex-col gap-4 mt-6" enctype="multipart/form-data">
+                <form action="{{ route('register.store') }}" method="POST" class="flex flex-col gap-4 mt-6"
+                    enctype="multipart/form-data">
                     @csrf
                     <div>
                         <label for="nama" class="text-sm text-gray-500">Nama Lengkap</label>

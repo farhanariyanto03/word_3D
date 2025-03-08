@@ -248,8 +248,9 @@
                         <div class="swiper-slide">
                             <div data-aos="fade-right" data-aos-duration="1000"
                                 class="bg-white p-6 rounded-xl shadow-lg text-center border border-gray-200 transform hover:scale-105 transition duration-300">
-                                <i
-                                    class="ri-user-fill text-7xl rounded-full mx-auto border-4 border-green-500 shadow-md"></i>
+                                {{-- <i
+                                    class="ri-user-fill text-7xl rounded-full mx-auto border-4 border-green-500 shadow-md"></i> --}}
+                                    <img src="{{ asset('storage/' . $t->user->foto_profil) }}" class="mx-auto w-24 h-24 object-cover rounded-full border-4 border-green-500" alt="">
                                 <p class="mt-4 text-xl font-bold text-gray-800">{{ $t->user->nama }}</p>
                                 @for ($i = 1; $i <= 5; $i++)
                                     @if ($i <= $t->rating)
