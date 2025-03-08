@@ -56,6 +56,7 @@ class LoginController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required',
             'no_hp' => 'required',
+            'foto_profil' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
         ], [
             'nama.required' => "Nama harus diisi",
             'email.required' => "Email harus diisi",
@@ -63,7 +64,16 @@ class LoginController extends Controller
             'email.unique' => "Email sudah terdaftar",
             'password.required' => "Password harus diisi",
             'no_hp.required' => "No HP harus diisi",
+            'foto_profil.required' => "Foto Profil harus diisi",
+            'foto_profil.mimes' => "Format gambar harus JPEG, PNG, JPG, GIF, atau SVG",
+            'foto_profil.max' => "Ukuran gambar maksimal 1 MB",
         ]);
+
+        if ($request->hasFile('foto_profil')) {
+            $file = $request->file('foto_profil');
+            $filePath = $file->store('foto_profil', 'public');
+            $validatedData['foto_profil'] = $filePath;
+        }
 
         $validatedData['password'] = Hash::make($validatedData['password']);
         $validatedData['role'] = 'customer';
@@ -73,6 +83,7 @@ class LoginController extends Controller
             'email' => $validatedData['email'],
             'password' => $validatedData['password'],
             'no_hp' => $validatedData['no_hp'],
+            'foto_profil' => $validatedData['foto_profil'],
             'role' => $validatedData['role'],
         ]);
 

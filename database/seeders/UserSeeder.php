@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
             'no_hp' => '082298961719',
             'email' => 'justplaycorporate@gmail.com',
             'password' => Hash::make('Arvan2555'),
+            'foto_profil' => '',
             'role' => 'admin'
         ]);
     }

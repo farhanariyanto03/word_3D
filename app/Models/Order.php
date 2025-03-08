@@ -17,11 +17,19 @@ class Order extends Model
         parent::boot();
 
         static::creating(function ($order) {
-            do {
-                $invoiceId = 'INV' . rand(1000000, 9999999); // Format: INV + 7 angka
-            } while (Order::where('id', $invoiceId)->exists()); // Pastikan tidak ada ID duplikat
+            // Ambil ID terakhir dari database
+            $lastOrder = Order::latest('id')->first();
 
-            $order->id = $invoiceId;
+            if ($lastOrder) {
+                // Ambil angka dari ID terakhir (contoh: INV121 → 121)
+                $lastNumber = intval(substr($lastOrder->id, 3));
+                $newNumber = $lastNumber + 1;
+            } else {
+                $newNumber = 121; // Jika tidak ada data, mulai dari INV121
+            }
+
+            // Format ID baru (contoh: INV122)
+            $order->id = 'INV' . $newNumber;
         });
     }
 

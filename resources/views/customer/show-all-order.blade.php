@@ -17,7 +17,7 @@
     {{-- @vite('resources/css/app.css')
     @vite('resources/js/app.js') --}}
     <link rel="stylesheet" href="{{ asset('build/assets/app-CacknrTH.css') }}">
-    <title>WORLD 3D</title>
+    <title>Justplay Corporate</title>
 </head>
 
 <body class="flex flex-col min-h-screen">
@@ -136,7 +136,7 @@
                         <tr class="border">
                             <td class="border p-2">{{ $loop->iteration }}</td>
                             <td class="border p-2">{{ $order->user->nama }}</td>
-                            <td class="border p-2">INV{{ str_repeat('*', 5) . substr($order->id, -2) }}</td>
+                            <td class="border p-2">INV**{{ substr($order->id, -1) }}</td>
                             <td class="border p-2">
                                 <div class="w-full bg-gray-200 rounded-full h-4">
                                     <div class="{{ $order->color }} h-4 rounded-full text-xs text-center text-white"

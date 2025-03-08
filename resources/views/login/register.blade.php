@@ -49,7 +49,7 @@
                     </div>
                 @endif
 
-                <form action="{{ route('register.store') }}" method="POST" class="flex flex-col gap-4 mt-6">
+                <form action="{{ route('register.store') }}" method="POST" class="flex flex-col gap-4 mt-6" enctype="multipart/form-data">
                     @csrf
                     <div>
                         <label for="nama" class="text-sm text-gray-500">Nama Lengkap</label>
@@ -79,6 +79,12 @@
                                 <label for="show-password" class="text-sm text-gray-600">Tampilkan Password</label>
                             </div>
                         </div>
+                    </div>
+                    <div>
+                        <label for="foto_profil" class="text-sm text-gray-500">Foto Profil</label>
+                        <input type="file" name="foto_profil" value="{{ old('foto_profil') }}"
+                            placeholder="Masukkan nama lengkap Anda"
+                            class="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent">
                     </div>
                     <button type="submit"
                         class="w-full bg-green-500 text-white py-3 mt-4 rounded-lg hover:bg-green-600 transition duration-300">

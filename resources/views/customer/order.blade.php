@@ -17,7 +17,7 @@
     {{-- @vite('resources/css/app.css')
     @vite('resources/js/app.js') --}}
     <link rel="stylesheet" href="{{ asset('build/assets/app-CacknrTH.css') }}">
-    <title>WORLD 3D</title>
+    <title>Justplay Corporate</title>
 </head>
 
 <body>
@@ -230,7 +230,7 @@
                             <span>Bayar</span>
                             <span class="font-medium">
                                 <input type="number" id="bayarInput" name="bayar" class="border rounded-lg p-2"
-                                    value="0" min="0">
+                                    value="" min="0">
                             </span>
                         </div>
                         <div class="flex justify-between text-gray-700">
