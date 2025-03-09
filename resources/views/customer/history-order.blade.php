@@ -16,17 +16,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     {{-- @vite('resources/css/app.css')
     @vite('resources/js/app.js') --}}
-    <link rel="stylesheet" href="{{ asset('build/assets/app-CacknrTH.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/app-B6O_kfGf.css') }}">
     <title>Justplay Corporate</title>
 </head>
 
 <body class="flex flex-col min-h-screen">
     {{-- Navbar --}}
-    <nav class="bg-white fixed top-0 left-0 w-full z-50 shadow-md">
+    <nav class="bg-black fixed top-0 left-0 w-full z-50 shadow-md">
         <div class="max-w-7xl mx-auto flex items-center justify-between h-20 px-6">
             <a href="{{ route('customer.index') }}">
-                <img src="{{ asset('assets/images/fj-jf-logo-letter-designs-2-3b8bf7313ef88e1ab5bee6199d6cDf70c0f36fc4fb70b6fb950e63b6b7c0ccbcf (1).png') }}"
-                    class="w-32" alt="">
+                <img src="{{ asset('assets/images/hitam.png') }}" class="w-32" alt="">
             </a>
 
             <!-- Desktop Menu -->
@@ -260,10 +259,6 @@
     <footer class="bg-green-700 text-white py-10 px-6 md:px-12">
         <div
             class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-start text-center md:text-left gap-6">
-            <div class="md:w-1/3">
-                <h2 class="text-2xl font-extrabold">3D Video Store</h2>
-                <p class="mt-2 text-sm text-gray-200">Toko terbaik untuk koleksi video 3D berkualitas tinggi.</p>
-            </div>
 
             <!-- Navigation Links -->
             <div class="md:w-1/3">
@@ -275,6 +270,14 @@
                     <li><a href="{{ route('customer.index') }}" class="hover:underline">Testimonial</a></li>
                     <li><a href="{{ route('history-order.index') }}" class="hover:underline">Histori</a></li>
                 </ul>
+            </div>
+
+            <div class="md:w-1/3">
+                <h2 class="text-2xl font-extrabold">JUSTPLAY CORPORATE</h2>
+                <p class="mt-2 text-sm text-gray-200">Studio kreatif yang bergerak di bidang animasi 3D, pengembangan
+                    game, dan pembuatan website. Kami menghadirkan solusi visual dan teknologi interaktif untuk berbagai
+                    industri, mulai dari hiburan, pendidikan, pemasaran, hingga bisnis. Dengan tim profesional yang
+                    berpengalaman, kami siap mewujudkan ide-ide inovatif menjadi kenyataan digital yang mengesankan.</p>
             </div>
 
             <!-- Social Media -->
@@ -292,7 +295,7 @@
         </div>
 
         <div class="mt-6 text-center border-t border-gray-400 pt-4">
-            <p class="text-sm">&copy; 2024 3D Video Store. All rights reserved.</p>
+            <p class="text-sm">&copy; 2025 JUSTPLAY CORPORATE . ALL RIGHT RESERVXX</p>
         </div>
     </footer>
 

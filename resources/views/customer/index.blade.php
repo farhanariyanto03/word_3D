@@ -16,17 +16,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     {{-- @vite('resources/css/app.css')
     @vite('resources/js/app.js') --}}
-    <link rel="stylesheet" href="{{ asset('build/assets/app-CacknrTH.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/app-B6O_kfGf.css') }}">
     <title>Justplay Corporate</title>
 </head>
 
 <body>
     {{-- Navbar --}}
-    <nav class="bg-white fixed top-0 left-0 w-full z-50 shadow-md">
+    <nav class="bg-black fixed top-0 left-0 w-full z-50 shadow-md">
         <div class="max-w-7xl mx-auto flex items-center justify-between h-20 px-6">
             <a href="{{ route('customer.index') }}">
-                <img src="{{ asset('assets/images/fj-jf-logo-letter-designs-2-3b8bf7313ef88e1ab5bee6199d6cDf70c0f36fc4fb70b6fb950e63b6b7c0ccbcf (1).png') }}"
-                    class="w-32" alt="">
+                <img src="{{ asset('assets/images/hitam.png') }}" class="w-32" alt="">
             </a>
 
             <!-- Desktop Menu -->
@@ -127,11 +126,12 @@
         <div class="relative text-center px-6 md:px-12 max-w-4xl">
             <h1 data-aos="fade-up" data-aos-duration="1000"
                 class="text-5xl md:text-7xl font-extrabold text-green-500 drop-shadow-lg">
-                Justplay Corporate, Dari Kode ke Kreativitas, Dari Imajinasi ke Realitas!
+                "Dari Kode ke Kreativitas, Dari Imajinasi ke Realitas!"
             </h1>
             <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000"
                 class="mt-6 text-lg md:text-2xl text-gray-300 font-light">
-                Temukan video 3D berkualitas tinggi dan imersif yang dibuat untuk hiburan dan keunggulan bisnis.
+                Temukan kebutuhan proyek anda dengan kualitas tinggi dan pengalaman imersif, dirancang untuk hiburan dan
+                keunggulan bisnis.
             </p>
             <div data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000"
                 class="mt-8 flex justify-center space-x-4">
@@ -148,11 +148,10 @@
     <section class="bg-white py-16 px-6 md:px-12 text-white" id="services">
         <div class="max-w-6xl mx-auto text-center">
             <h2 class="text-4xl md:text-5xl font-extrabold text-green-500 drop-shadow-lg" data-aos="fade-up">
-                Mengapa Memilih Video 3D Kami?
+                Mengapa Memilih Jasa Kami?
             </h2>
             <p class="mt-4 text-lg text-gray-600" data-aos="fade-up" data-aos-delay="200">
-                Kami menawarkan pengalaman 3D yang mendalam dan berkualitas tinggi yang mendefinisikan ulang penceritaan
-                visual.
+                Kami menawarkan pengalaman pembuatan proyek yang mendalam dan berkualitas tinggi.
             </p>
         </div>
 
@@ -165,7 +164,7 @@
                     <i class="ri-film-line text-3xl"></i>
                 </div>
                 <h3 class="text-2xl font-semibold mt-12">Kualitas Ultra HD</h3>
-                <p class="mt-4 text-lg text-gray-100">Nikmati video 3D sebening kristal dengan resolusi menakjubkan.
+                <p class="mt-4 text-lg text-gray-100">Nikmati hasil proyek dengan resolusi menakjubkan.
                 </p>
             </div>
 
@@ -197,10 +196,9 @@
     <!-- Products Section -->
     <section class="bg-black text-white py-16 px-6 md:px-12" id="products">
         <div class="max-w-6xl mx-auto text-center" data-aos="fade-up">
-            <h2 class="text-4xl font-extrabold text-green-500">CATALOG VIDEO 3D ANIMASI</h2>
+            <h2 class="text-4xl font-extrabold text-green-500">CATALOG PROYEK</h2>
             <p class="mt-4 text-lg text-gray-400">Silahkan order sesuai kebutuhan anda , hubungi contact di admin untuk
-                konsultasi.
-            </p>
+                konsultasi.</p>
         </div>
 
         <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -250,7 +248,9 @@
                                 class="bg-white p-6 rounded-xl shadow-lg text-center border border-gray-200 transform hover:scale-105 transition duration-300">
                                 {{-- <i
                                     class="ri-user-fill text-7xl rounded-full mx-auto border-4 border-green-500 shadow-md"></i> --}}
-                                    <img src="{{ asset('storage/' . $t->user->foto_profil) }}" class="mx-auto w-24 h-24 object-cover rounded-full border-4 border-green-500" alt="">
+                                <img src="{{ asset('storage/' . $t->user->foto_profil) }}"
+                                    class="mx-auto w-24 h-24 object-cover rounded-full border-4 border-green-500"
+                                    alt="">
                                 <p class="mt-4 text-xl font-bold text-gray-800">{{ $t->user->nama }}</p>
                                 @for ($i = 1; $i <= 5; $i++)
                                     @if ($i <= $t->rating)
@@ -281,8 +281,8 @@
     <!-- VideoY T Section -->
     <section class="bg-black text-white py-16 px-6 md:px-12" id="portfolio">
         <div class="max-w-6xl mx-auto text-center" data-aos="fade-up">
-            <h2 class="text-4xl font-extrabold text-green-500">Portofolio Video 3D Kami</h2>
-            <p class="mt-4 text-lg text-gray-400">Lihat proyek video 3D terbaik kami langsung dari YouTube.</p>
+            <h2 class="text-4xl font-extrabold text-green-500">Portofolio Proyek Kami</h2>
+            <p class="mt-4 text-lg text-gray-400">Lihat proyek terbaik kami langsung dari YouTube.</p>
         </div>
 
         <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
@@ -325,9 +325,10 @@
 
             <div class="md:w-1/3">
                 <h2 class="text-2xl font-extrabold">JUSTPLAY CORPORATE</h2>
-                <p class="mt-2 text-sm text-gray-200">Temukan video 3D berkualitas tinggi yang menggabungkan
-                    kreativitas dan teknologi untuk hiburan serta keunggulan bisnis Anda. JUSTPLAY CORPORATE Dari Kode
-                    ke Kreativitas, Dari Imajinasi ke Realitas!.</p>
+                <p class="mt-2 text-sm text-gray-200">Studio kreatif yang bergerak di bidang animasi 3D, pengembangan
+                    game, dan pembuatan website. Kami menghadirkan solusi visual dan teknologi interaktif untuk berbagai
+                    industri, mulai dari hiburan, pendidikan, pemasaran, hingga bisnis. Dengan tim profesional yang
+                    berpengalaman, kami siap mewujudkan ide-ide inovatif menjadi kenyataan digital yang mengesankan.</p>
             </div>
 
             <!-- Social Media -->

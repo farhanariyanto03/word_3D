@@ -37,6 +37,8 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::put('/pesanan/{id}/proses', [PesananController::class, 'updateProses'])->name('pesanan.proses');
     Route::delete('/pesanan/{id}/tolak', [PesananController::class, 'deleteOrder'])->name('pesanan.tolak');
     Route::put('/pesanan/{id}/selesai', [PesananController::class, 'updateSelesai'])->name('pesanan.selesai');
+    Route::put('/pesanan/{id}/histori', [PesananController::class, 'updateHistori'])->name('pesanan.histori');
+    Route::put('/pesanan/{id}/prioritas', [PesananController::class, 'updatePrioritas'])->name('pesanan.prioritas');
     Route::get('/pesanan/{id}/cetak-invoice', [PesananController::class, 'cetakInvoice'])->name('pesanan.invoice');
     Route::put('/pesanan/{id}/link-video', [PesananController::class, 'updateOrder'])->name('pesanan.link-video');
     Route::resource('video-yt', VideoYtController::class);

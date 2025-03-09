@@ -162,19 +162,22 @@ class LandingPageController extends Controller
 
     public function showAllOrder()
     {
-        $orders = Order::with('user')->get();
+        $orders = Order::with('user')
+            ->orderByRaw("CASE WHEN status = 'histori' THEN 1 ELSE 0 END")
+            ->orderBy('prioritas', 'asc')
+            ->get();
 
         $orders->transform(function ($order) {
             switch ($order->status) {
-                case 'sudah bayar':
+                case 'proses':
                     $order->progress = 33.33;
                     $order->color = 'bg-yellow-500';
                     break;
-                case 'proses':
+                case 'selesai':
                     $order->progress = 66.66;
                     $order->color = 'bg-blue-500';
                     break;
-                case 'selesai':
+                case 'histori':
                     $order->progress = 100;
                     $order->color = 'bg-green-500';
                     break;
