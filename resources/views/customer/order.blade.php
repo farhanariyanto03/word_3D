@@ -229,7 +229,7 @@
                         <div class="flex justify-between text-gray-700">
                             <span>Bayar</span>
                             <span class="font-medium">
-                                <input type="number" id="bayarInput" name="bayar" class="border rounded-lg p-2"
+                                <input type="number" id="bayarInput" name="bayar" class="border rounded-lg p-2 w-40"
                                     value="" min="0">
                             </span>
                         </div>
